@@ -1,14 +1,13 @@
-import {default as foodStorage} from './data.js';
-import {default as animalRepo} from './model.js';
+import {default as model} from './model.js';
 
-(function($) {
+;(function($) {
 
     function createAnimalEntry(animal, id) {
         let oldValue = $("#animal" + id);
 
         if (oldValue.length > 0) {
             $("span", oldValue[0]).text(animal.toString());
-            if (animal.foodRequired()) {
+            if (animal.isFoodRequired()) {
                 $("input", oldValue).show();
             }
             else {
@@ -31,7 +30,7 @@ import {default as animalRepo} from './model.js';
             }
         });
         div.append(input);
-        if (animal.foodRequired()) {
+        if (animal.isFoodRequired()) {
             input.show();
         }
         else {
@@ -52,7 +51,7 @@ import {default as animalRepo} from './model.js';
 
         reorder.click(function () {
             reorder.prop("disabled", true);
-            foodStorage.orderFood(food, function () {
+            model.foodRepo.orderFood(food, function () {
                 span.text(food.name + "[amount: " + food.amount + " ]");
                 reorder.prop("disabled", false);
             });
@@ -63,13 +62,13 @@ import {default as animalRepo} from './model.js';
     }
 
     function showData() {
-        for (let i = 0; i < animalRepo.getAll().length; ++i) {
-            createAnimalEntry(animalRepo.getAll()[i], i);
+        for (let i = 0; i < model.animalRepo.getAnimals().length; ++i) {
+            createAnimalEntry(model.animalRepo.getAnimals()[i], i);
         }
     }
 
     function showFood() {
-        let food = foodStorage.getAll();
+        let food = model.foodRepo.getStorage();
         for (let i = 0; i < food.length; ++i) {
             createFoodEntry(food[i], i);
         }
@@ -83,13 +82,13 @@ import {default as animalRepo} from './model.js';
 
         $("#createPanda").click(
             function () {  // creates Panda Object
-                animalRepo.addPanda($("#name").val());
+                model.animalRepo.addPanda($("#name").val());
                 showData();
             });
 
         $("#createLion").click(
             function () { // creates Lion Object
-                animalRepo.addLion($("#name").val());
+                model.animalRepo.addLion($("#name").val());
                 showData();
             });
 

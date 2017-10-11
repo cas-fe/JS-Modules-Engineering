@@ -2,7 +2,46 @@
  * Created by sgehrig on 03.06.2015.
  */
 
-let animalRepo = (function() {
+const foodRepo = (function() {
+    "use strict";
+
+    const storage = foodStorage.getAll();
+
+    if (storage.length === 0) {
+        storage.push({name: "bambus", amount : 3, amountPerDelivery : 3 });
+        storage.push({name: "grass", amount : 10, amountPerDelivery : 10 });
+        storage.push({name: "straw", amount : 10, amountPerDelivery : 10 });
+        storage.push({name: "beef", amount : 10, amountPerDelivery : 10, isMeet : true });
+        storage.push({name: "chicken", amount : 10, amountPerDelivery : 10, isMeet : true });
+
+        foodStorage.persist(storage);
+    }
+
+    function findFoodByName(name) {
+        return storage.findByName(name);
+    }
+
+    function orderFood(food, callback) {
+        setTimeout(
+            function () {
+                food.amount += food.amountPerDelivery;
+                foodStorage.persist(storage);
+
+                if (typeof(callback) === 'function') {
+                    callback();
+                }
+            }, 2000)
+    }
+
+    function getStorage() {
+        return storage;
+    }
+
+    return { orderFood, findFoodByName, getStorage };
+})();
+
+
+const animalRepo = (function() {
     "use strict";
 
     const animals = [];
@@ -15,25 +54,19 @@ let animalRepo = (function() {
             this.compatibleFood = [];
         }
 
-        foodRequired() {
-            return !this.isDead && this.isFoodRequired(this);
-        }
         toString() {
-            return (this.isDead ? "RIP " : '') + this.name + "[" + this.constructor.name + "]" + (this.foodRequired() ? " -hungrig" : "");
+            return (this.isDead ? "RIP " : '') + this.name + "[" + this.constructor.name + "]" + (this.isFoodRequired() ? " -hungrig" : "");
         }
         eaten() {
             this.isDead = true;
         }
-        feed() {
-            return this.feedAnimal();
-        }
         isFoodRequired() {
             return !this.isDead && (this.nextFeedAt == null || this.nextFeedAt < +new Date());
         }
-        feedAnimal(){
+        feed(){
             for (let i = 0 ; i<this.compatibleFood.length; ++i) {
                 let foodForAnimal = this.compatibleFood[i];
-                let foodFound = foodStorage.findByName(foodForAnimal.name);
+                let foodFound = foodRepo.findFoodByName(foodForAnimal.name);
 
                 if (foodFound && foodFound.amount >= foodForAnimal.amount) {
                     this.nextFeedAt = Animal.addTime(foodForAnimal.timeToNextFood);
@@ -63,8 +96,8 @@ let animalRepo = (function() {
         }
 
         feed() {
-            if (!super.feedAnimal()) {
-                var panda = animals.filter(function (x) {
+            if (!super.feed()) {
+                let panda = animals.filter(function (x) {
                     return (x instanceof Panda && !x.isDead);
                 });
                 if (panda[0]) {
@@ -91,13 +124,9 @@ let animalRepo = (function() {
         return panda;
     }
 
-    function getAll() {
+    function getAnimals() {
         return animals;
     }
 
-    return {
-        addLion : addLion,
-        addPanda : addPanda,
-        getAll : getAll
-    };
+    return { addLion, addPanda, getAnimals };
 })();

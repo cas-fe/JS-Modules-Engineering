@@ -15,7 +15,7 @@
 
             if (oldValue.length > 0) {
                 $("span", oldValue[0]).text(animal.toString());
-                if (animal.foodRequired()) {
+                if (animal.isFoodRequired()) {
                     $("input", oldValue).show();
                 }
                 else {
@@ -38,7 +38,7 @@
                 }
             });
             div.append(input);
-            if (animal.foodRequired()) {
+            if (animal.isFoodRequired()) {
                 input.show();
             }
             else {
@@ -50,8 +50,8 @@
         }
 
         function showData() {
-            for (let i = 0; i < animalRepo.getAll().length; ++i) {
-                createAnimalEntry(animalRepo.getAll()[i], i);
+            for (let i = 0; i < animalRepo.getAnimals().length; ++i) {
+                createAnimalEntry(animalRepo.getAnimals()[i], i);
             }
         }
 
@@ -67,7 +67,7 @@
 
             reorder.click(function () {
                 reorder.prop("disabled", true);
-                foodStorage.orderFood(food, function () {
+                foodRepo.orderFood(food, function () {
                     span.text(food.name + "[amount: " + food.amount + " ]");
                     reorder.prop("disabled", false);
                 });
@@ -79,7 +79,7 @@
         }
 
         function showFood() {
-            let food = foodStorage.getAll();
+            let food = foodRepo.getStorage();
             for (let i = 0; i < food.length; ++i) {
                 createFoodEntry(food[i], i);
             }
