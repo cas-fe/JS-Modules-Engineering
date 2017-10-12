@@ -46,7 +46,7 @@ Arbeiten Sie weiter an Ihrer Lösung aus Übung 2.
   2. Platzieren Sie den Controller ebenfalls in ein eigenes Module.
   3. Lagern Sie die Persistenz-Features (LocalStorage-Aufruf des Food Storage) in ein weiteres Module (= Data Persistence Module) aus.
 
-*Hinweis: Bei grösseren Projekten ist es empfehlenswert, das Model/Controller/usw. in weitere Folders und Files aufzuteilen unddie Script-Files anhand der enthaltenen Features zu benennen, z.B. data/food-storage.js, model/panda.js, model/lion.js, usw.*
+*Hinweis: Bei grösseren Projekten ist es empfehlenswert, das Model/Controller/usw. in weitere Folders und Files aufzuteilen und die Script-Files anhand der enthaltenen Features zu benennen, z.B. data/food-storage.js, model/panda.js, model/lion.js, usw.*
 
 
 * **Optional/Advanced**: Machen Sie den Controller-Code lesbarer ([handlebars](http://handlebarsjs.com/) Übung)
