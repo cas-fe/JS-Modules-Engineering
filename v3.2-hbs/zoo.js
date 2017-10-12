@@ -2,11 +2,11 @@ import {default as model} from './model.js';
 
 ;(function($) {
 
+    const foodService = new model.FoodService();
+    const animalService = new model.AnimalService(foodService);
+
     let foodTemplateProcessor = null;
     let animalTemplateProcessor = null;
-
-    let foodService = new model.FoodService();
-    let animalService = new model.AnimalService(foodService);
 
 
     function showAnimals() {
@@ -27,7 +27,8 @@ import {default as model} from './model.js';
         foodTemplateProcessor =  Handlebars.compile($("#food-list-template").html());
         animalTemplateProcessor =  Handlebars.compile($("#animal-list-template").html());
 
-        function handleFoodOrderClick(target) {
+        function handleFoodOrderClick(event) {
+            let target = $(event.target);
             let foodId = Number(target.data("food-id"));
 
             if (!isNaN(foodId)) {
@@ -39,7 +40,8 @@ import {default as model} from './model.js';
             }
         }
 
-        function handleAnimalFeedClick(target) {
+        function handleAnimalFeedClick(event) {
+            let target = $(event.target);
             let animalId = Number(target.data("animal-id"));
 
             if (!isNaN(animalId)) {
@@ -51,11 +53,8 @@ import {default as model} from './model.js';
             }
         }
 
-        $(document).on("click", function(event) {
-            let target = $(event.target);
-            handleFoodOrderClick(target);
-            handleAnimalFeedClick(target);
-        });
+        $(document).on("click", "input[data-food-id]", handleFoodOrderClick);
+        $(document).on("click", "input[data-animal-id]", handleAnimalFeedClick);
 
         $("#createPanda").click(
             function () {  // creates Panda Object
