@@ -39,12 +39,12 @@ Arbeiten Sie weiter an Ihrer Lösung aus Übung 2.
   * Welche Patterns haben Sie bereits eingesetzt?
 * Kapseln Sie Ihre Funktionalitäten in den MVC-Files in Modules.
   * Verwenden Sie dafür das Module Pattern (als Übung fürs Projekt 1).
-    * *Alternativ*: Verwenden Sie die ES2015 Module Syntax mit Google Chrome.	Damit die Modules geladen werden, müssen den Zoo beispielsweise unter node.js hosten.
+    * *Alternativ*: Verwenden Sie die ES2015 Module Syntax mit Google Chrome. Damit die Modules geladen werden, müssen die Sourcen des Zoo's (beispielsweise in node.js) gehosted werden.
     * *Optional*: Setzen Sie weitere Patterns wie z.B. Namespace ein.
-  * Stellen Sie sicher, dass die Architektur rechts eingehalten wird.
+  * Stellen Sie sicher, dass die MVC-Architektur (View -> Model -> Data) aus der Vorlesung eingehalten wird.
   1. Erstellen Sie ein Modul fürs Model.
   2. Platzieren Sie den Controller ebenfalls in ein eigenes Module.
-  3. Lagern Sie die Persistenz-Features (LocalStorage-Aufruf des Food Storage) inein weiteres Module (= Data Persistence Module) aus.
+  3. Lagern Sie die Persistenz-Features (LocalStorage-Aufruf des Food Storage) in ein weiteres Module (= Data Persistence Module) aus.
 
 *Hinweis: Bei grösseren Projekten ist es empfehlenswert, das Model/Controller/usw. in weitere Folders und Files aufzuteilen unddie Script-Files anhand der enthaltenen Features zu benennen, z.B. data/food-storage.js, model/panda.js, model/lion.js, usw.*
 
@@ -59,7 +59,7 @@ Arbeiten Sie weiter an Ihrer Lösung aus Übung 2.
 
      Tip: mit jQuery ```$(event.target).data("animal-id")```
 
-*Hinweis: Für Ihr Projekt 1 werden Sie ähnliche Event Handling Mechanismen in Zusammenhangmit dem handlebars Templating benötigen.*
+*Hinweis: Für Ihr Projekt 1 werden Sie ähnliche Event Handling Mechanismen in Zusammenhang mit dem handlebars Templating benötigen.*
 
 
 Die ES5-Modul basierten Lösungen befinden sich im [Unterordner v3.1](v3.1).
