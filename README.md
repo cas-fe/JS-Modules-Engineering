@@ -59,9 +59,9 @@ Arbeiten Sie weiter an Ihrer Lösung aus Übung 2.
 
      Tip: mit jQuery ```$(event.target).data("animal-id")```
 
-*Hinweis: Für Ihr Projekt 1 werden Sie ähnliche Event Handling Mechanismen in Zusammenhang mit dem handlebars Templating benötigen.*
+*Hinweis: Für Ihr Projekt 1 werden Sie ähnliche Event Handling Mechanismen in Zusammenhang mit MVC und dem handlebars Templating benötigen.*
 
 
 Die ES5-Modul basierten Lösungen befinden sich im [Unterordner v3.1](v3.1).
 
-Die ESM basierten Lösungen befinden sich im [Unterordner v3.2](v3.2) sowie im [Unterordner v3.2-hbs](v3.2-hbs) für den optionalen Teil.
+Die ESM basierten Lösungen befinden sich im [Unterordner v3.2](v3.2) sowie im [Unterordner v3.2-hbs](v3.2-hbs) für den optionalen Teil. Die "unschönen" Timeouts wurden absichtlich nicht behoben, da ansonsten ein zu grosses Delta mit der vorherigen Lösung entsteht (Einsatz einer Clock Engine nötig).
