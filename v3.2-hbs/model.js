@@ -32,11 +32,11 @@ class FoodService {
 
         if (foodFromStorage.length === 0) {
             this.food = [ ];
-            this.food.push(new Food("bambus", 3, 3));
-            this.food.push(new Food("grass", 10, 10));
-            this.food.push(new Food("straw", 10, 10));
-            this.food.push(new Food("beef", 10, 10, true));
-            this.food.push(new Food("chicken", 10, 10, true));
+            this.food.push(new Food(0, "bambus", 3, 3));
+            this.food.push(new Food(1, "grass", 10, 10));
+            this.food.push(new Food(2, "straw", 10, 10));
+            this.food.push(new Food(3, "beef", 10, 10, true));
+            this.food.push(new Food(4, "chicken", 10, 10, true));
             this.save();
         }
         else {
