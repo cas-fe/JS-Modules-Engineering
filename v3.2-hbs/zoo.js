@@ -48,7 +48,7 @@ import {default as model} from './model.js';
                 if (animalService.animals[animalId].feed(() => updateUI())) {
                     updateUI();
                 } else {
-                    target.val("No foood!");
+                    target.val("Feed (No foood!)");
                 }
             }
         }
