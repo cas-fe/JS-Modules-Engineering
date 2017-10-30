@@ -65,3 +65,11 @@ Arbeiten Sie weiter an Ihrer Lösung aus Übung 2.
 Die ES5-Modul basierten Lösungen befinden sich im [Unterordner v3.1](v3.1).
 
 Die ESM basierten Lösungen befinden sich im [Unterordner v3.2](v3.2) sowie im [Unterordner v3.2-hbs](v3.2-hbs) für den optionalen Teil. Die "unschönen" Timeouts wurden absichtlich nicht behoben, da ansonsten ein zu grosses Delta mit der vorherigen Lösung entsteht (Einsatz einer Clock Engine nötig). Zusätzlich sollten Model/Controller/usw. in weitere Folders und Files (z.B pro Klasse ein File) aufgeteilt werden.
+
+
+## Lisence
+
+| Document | License |
+| --- | --- |
+| Exercises | <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CAS-FEE Testing</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.ifs.hsr.ch" property="cc:attributionName" rel="cc:attributionURL"> IFS, HSR Hochschule für Technik, Rapperswil</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. <br />Based on a work at<a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/IFS-Web/HSR.CAS-FEE.Testing" rel="dct:source">    https://github.com/IFS-Web/HSR.CAS-FEE.Testing</a>. |
+| Code examples | The code examples are licensed under [The MIT License (MIT)](./LICENSE). |
