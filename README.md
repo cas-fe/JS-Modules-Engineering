@@ -67,7 +67,7 @@ Die ES5-Modul basierten Lösungen befinden sich im [Unterordner v3.1](v3.1).
 Die ESM basierten Lösungen befinden sich im [Unterordner v3.2](v3.2) sowie im [Unterordner v3.2-hbs](v3.2-hbs) für den optionalen Teil. Die "unschönen" Timeouts wurden absichtlich nicht behoben, da ansonsten ein zu grosses Delta mit der vorherigen Lösung entsteht (Einsatz einer Clock Engine nötig). Zusätzlich sollten Model/Controller/usw. in weitere Folders und Files (z.B pro Klasse ein File) aufgeteilt werden.
 
 
-## Lisence
+## License
 
 | Document | License |
 | --- | --- |
