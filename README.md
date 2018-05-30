@@ -5,7 +5,7 @@ CAS-FEE Übungen für "Engineering mit ES6+ (2) Modularisierung im Browser".
 
 Machen Sie sich mit der Vorlage vertraut (siehe [zoo.html im Root Directory](zoo.html))
 * Gibt es unschöne Stellen im Code, wurde Code kopiert?
-* Könnte man solche Code-Fragmente anhand deren Logik und benötigten Daten zusammen fassen?
+* Könnte man solche Code-Fragmente anhand deren Logik und benötigten Daten zusammenfassen?
 1. Erstellen Sie jeweils fürs Model (model.js) und den Controller (zoo.js) ein eigenes Script-File.
 2. Verlinken Sie die benötigten JavaScript Files im zoo.html .
 3. Verbessern Sie die Lesbarkeit des Codes, indem Sie die Funktionalitäten aufspalten und gemäss MVC in die jeweiligen MVC-Files auslagern.
