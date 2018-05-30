@@ -20,14 +20,13 @@ Die Lösungen befinden sich im [Unterordner v1](v1).
 ## Übungsserie 2
 
 Arbeiten Sie weiter an Ihrer Lösung aus Übung 1.
-* Implementieren Sie für die Daten-spezifischen Funktionalitäten eine eigene Klasse im Model File.
-  * Instanziieren Sie die Klasse mit den Daten-Funktionalitäten direkt im globalen Scope.
+* Implementieren Sie für «Löwe», «Panda» eine eigene Klasse im Model-File (model.js).
+  * Lagern Sie die existierenden Funktionalitäten/Daten-Strukturen in die neuen Klassen (=Business Logik des Model) aus.
+  * Instanziieren Sie diese Klassen («Löwe», «Panda»), sobald der "Create ..."-Button gedrückt wird und speichern Sie diese Instanzen.
   * Nutzen Sie die class Syntax von ES2015.
-* Erstellen Sie die Klassen für die Tiere (Löwe, Panda, …) (Business Logik des Model).
-  * Lagern Sie die existierende Funktionalität in die neuen Klassen aus.
 * Schreiben Sie eine Basis-Klasse «Animal» mit den Gemeinsamkeiten.
   * Leiten Sie die «Löwe», «Panda», … mittels Vererbung von der neuen Basis-Klasse ab.
-* Erweitern Sie die nativen Prototypen und lagern Sie so Utility-Funktionen aus.
+* Erweitern Sie die nativen Prototypen (z.B. Array.prototype) und lagern Sie so mögliche Utility-Funktionen aus.
   * Verwenden Sie die ```[Klasse].prototype.my_Util = function() { };``` Schreibweise.
 
 Die Lösungen befinden sich im [Unterordner v2](v2).
@@ -39,7 +38,7 @@ Arbeiten Sie weiter an Ihrer Lösung aus Übung 2.
   * Welche Patterns haben Sie bereits eingesetzt?
 * Kapseln Sie Ihre Funktionalitäten in den MVC-Files in Modules.
   * Verwenden Sie dafür das Module Pattern (als Übung fürs Projekt 1).
-    * *Alternativ*: Verwenden Sie die ES2015 Module Syntax mit Google Chrome. Damit die Modules geladen werden, müssen die Sourcen des Zoo's (beispielsweise in node.js) gehosted werden.
+    * *Alternativ*: Verwenden Sie die ES2015 Module Syntax. Damit die Modules geladen werden, müssen die Sourcen des Zoo's (beispielsweise in node.js) gehosted werden.
     * *Optional*: Setzen Sie weitere Patterns wie z.B. Namespace ein.
   * Stellen Sie sicher, dass die MVC-Architektur (View -> Model -> Data) aus der Vorlesung eingehalten wird.
   1. Erstellen Sie ein Modul fürs Model.
