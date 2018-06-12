@@ -67,7 +67,7 @@ Die ESM basierten Lösungen befinden sich im [Unterordner v3.2](v3.2) sowie im [
 
 
 ## Komplettlösung
-Eine komplett überarbeitete Lösung mit ESM / Promise / Clock Engine sowie einer Aufteilung der Klassen/Features in eigene Modul-Files befindet sich im [Unterordner v4.0](v4.0). Diese Lösung ist dazu gedacht, einen Einblick in die Architektur von komplexeren Client-Side Systemen zu erhalten. Die Struktur der Lösung [v4.0](v4.0) könnte ebenfalls auf das CAS FEE Mini-Projekt adaptiert werden.
+Eine komplett überarbeitete Lösung mit ESM / Promise / Clock Engine sowie einer Aufteilung der Klassen/Features in eigene Modul-Files befindet sich im [Unterordner v4.0](v4.0). Diese Lösung ist dazu gedacht, einen Einblick in die MVC-Architektur von komplexeren Client-Side Systemen zu erhalten. Die Struktur der Lösung [v4.0](v4.0) könnte ebenfalls auf das CAS FEE Mini-Projekt adaptiert werden.
 
 
 ## License
