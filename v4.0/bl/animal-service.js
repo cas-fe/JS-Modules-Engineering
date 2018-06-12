@@ -1,6 +1,9 @@
 import Lion from './lion.js';
 import Panda from './panda.js';
 
+/**
+ * Stores and manages the available animals.
+ */
 class AnimalService {
     constructor(context) {
         this.context = context;

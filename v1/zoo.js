@@ -70,7 +70,7 @@
             setTimeout(
                 function () {
                     food.amount += food.amountPerDelivery;
-                    localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
+                    localStorage.setItem("foodStorage_v10", JSON.stringify(foodStorage));
                     span.text(food.name + "[amount: " + food.amount + " ]");
                     reorder.prop("disabled", false);
                 }, 2000)

@@ -1,78 +1,116 @@
-import AnimalContext from '../bl/animal-context.js';
-import FoodPersistance from '../dl/food-persistance.js';
+import 'https://code.jquery.com/jquery-3.3.1.slim.min.js';
 
-;(function($) {
+const $ = jQuery;
 
-    const zoo = new AnimalContext(new FoodPersistance());
+/**
+ * Accommodates the controller logic to be used for the Zoo UI.
+ */
+class ZooController {
 
-    let foodTemplateProcessor = null;
-    let animalTemplateProcessor = null;
-
-
-    function showAnimals() {
-        $("#containerAnimals").html(animalTemplateProcessor({ animals: zoo.animalService.animals }));
+    constructor(zoo) {
+        this.zoo = zoo;
+        this.foodTemplateProcessor = null;
+        this.animalTemplateProcessor = null;
     }
 
-    function showFood() {
-        $("#containerFood").html(foodTemplateProcessor({ food: zoo.foodService.food }));
+    /**
+     * Initializes the VIEW templates to be used to render the UI.
+     */
+    initTemplates() {
+        this.foodTemplateProcessor = Handlebars.compile($("#food-list-template").html());
+        this.animalTemplateProcessor = Handlebars.compile($("#animal-list-template").html());
     }
 
-    function updateUI() {
-        showAnimals();
-        showFood();
+    /**
+     * Enforces the first UI initialization. Call that after the VIEW has been loaded.
+     */
+    initUI() {
+        this.initTemplates();
+        this.registerEvents();
+        this.updateUI();
     }
 
-
-    $(function () {
-        foodTemplateProcessor =  Handlebars.compile($("#food-list-template").html());
-        animalTemplateProcessor =  Handlebars.compile($("#animal-list-template").html());
-
-        async function handleFoodOrderClick(event) {
-            const target = $(event.target);
-            const foodId = Number(target.data("food-id"));
-
-            if (!isNaN(foodId)) {
-                target.prop("disabled", true);
-
-                await zoo.foodService.orderFoodById(foodId);
-                showFood();
-                target.prop("disabled", false);
-            }
-        }
-
-        async function handleAnimalFeedClick(event) {
-            const target = $(event.target);
-            const animalId = Number(target.data("animal-id"));
-
-            if (!isNaN(animalId)) {
-                const feedHandle = zoo.animalService.animals[animalId].feed();
-
-                if (feedHandle.enoughFood) {
-                    updateUI();
-                    await feedHandle.awaiter;
-                    updateUI();
-                } else {
-                    target.val("Feed (No foood!)");
-                }
-            }
-        }
-
-        $(document).on("click", "input[data-food-id]", handleFoodOrderClick);
-        $(document).on("click", "input[data-animal-id]", handleAnimalFeedClick);
+    /**
+     * Registers the UI events on the VIEW.
+     */
+    registerEvents() {
+        $(document).on("click", "input[data-food-id]", e => this.handleFoodOrderClick(e));
+        $(document).on("click", "input[data-animal-id]", e => this.handleAnimalFeedClick(e));
 
         $("#createPanda").click(
-            function () {  // creates Panda Object
-                zoo.animalService.addPanda($("#name").val());
-                showAnimals();
+            () => {  // creates Panda Object
+                this.zoo.animalService.addPanda($("#name").val());
+                this.showAnimals();
             });
 
         $("#createLion").click(
-            function () { // creates Lion Object
-                zoo.animalService.addLion($("#name").val());
-                showAnimals();
+            () => { // creates Lion Object
+                this.zoo.animalService.addLion($("#name").val());
+                this.showAnimals();
             });
+    }
 
-        updateUI();
-    });
+    /**
+     * Enforces a UI update (re-rendering).
+     */
+    updateUI() {
+        this.showAnimals();
+        this.showFood();
+    }
 
-})(jQuery);
+    /**
+     * Enforces the update of the animal UI part.
+     */
+    showAnimals() {
+        $("#containerAnimals").html(this.animalTemplateProcessor({ animals: this.zoo.animalService.animals }));
+    }
+
+    /**
+     * Enforces the update of the food UI part.
+     */
+    showFood() {
+        $("#containerFood").html(this.foodTemplateProcessor({ food: this.zoo.foodService.food }));
+    }
+
+    /**
+     * Internal food click event handler.
+     */
+    async handleFoodOrderClick(event) {
+        const target = $(event.target);
+        const foodId = Number(target.data("food-id"));
+
+        if (!isNaN(foodId)) {
+            target.prop("disabled", true);
+
+            await this.zoo.foodService.orderFoodById(foodId);
+            this.showFood();
+            target.prop("disabled", false);
+        }
+    }
+
+    /**
+     * Internal food click event handler.
+     */
+    async handleAnimalFeedClick(event) {
+        const target = $(event.target);
+        const animalId = Number(target.data("animal-id"));
+
+        if (!isNaN(animalId)) {
+            const feedHandle = this.zoo.animalService.animals[animalId].feed();
+
+            if (feedHandle.enoughFood) {
+                this.updateUI();
+                await feedHandle.awaiter;
+                this.updateUI();
+            } else {
+                target.val("Feed (No foood!)");
+            }
+        }
+    }
+}
+
+
+/**
+ * Exposed API facilities.
+ */
+export default ZooController;

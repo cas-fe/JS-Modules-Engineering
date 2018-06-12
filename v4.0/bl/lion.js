@@ -3,6 +3,9 @@ import FOOD_META from './food-meta.js';
 
 const ANIMAL_TIME_TO_NEXT_FOOD = 240; // s
 
+/**
+ * Represents the Lion animal.
+ */
 class Lion extends Animal {
     constructor(context, id, name) {
         super(
@@ -13,6 +16,9 @@ class Lion extends Animal {
 			]);
     }
 
+    /**
+     * Feeds the Lion with the available meet; moreover, other animals may be feed to the Lion.
+     */
     feed() {
         const feedHandle = super.feed();
 

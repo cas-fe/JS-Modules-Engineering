@@ -2,9 +2,9 @@
 
 // animals list
 const animals = [ ];
-const foodStorage = JSON.parse(localStorage.getItem("foodStorage") || "[ ]");
+const foodStorage = JSON.parse(localStorage.getItem("foodStorage_v10") || "[ ]");
 
-localStorage.setItem("foodStorage", JSON.stringify(foodStorage));
+localStorage.setItem("foodStorage_v10", JSON.stringify(foodStorage));
 
 if (foodStorage.length === 0) {
     foodStorage.push({name: "bambus", amount : 3, amountPerDelivery : 3 });

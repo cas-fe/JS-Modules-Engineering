@@ -17,11 +17,11 @@ const foodStorage = (function() {
     }
 
     function readFromLocalStorage(toPersist) {
-        return JSON.parse(localStorage.getItem("foodStorage") || "[ ]");
+        return JSON.parse(localStorage.getItem("foodStorage_v31") || "[ ]");
     }
 
     function writeToLocalStorage(toPersist) {
-        localStorage.setItem("foodStorage", JSON.stringify(toPersist));
+        localStorage.setItem("foodStorage_v31", JSON.stringify(toPersist));
     }
 
     return { persist, getAll };

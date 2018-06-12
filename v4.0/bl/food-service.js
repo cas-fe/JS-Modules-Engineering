@@ -2,9 +2,8 @@ import Food from './food.js';
 import FOOD_META from './food-meta.js';
 
 /**
- * Created by sgehrig on 03.06.2015.
+ * Contains the currently available food and stores it to the persistance layer.
  */
-
 class FoodService {
     constructor(context) {
         this.context = context;
@@ -25,10 +24,18 @@ class FoodService {
         }
     }
 
+    /**
+     * Searches a food by the given name.
+     * @param name Name to search for.
+     * @returns {T | undefined}
+     */
     findByName(name) {
         return this.food.find(f => f.meta.name === name);
     }
 
+    /**
+     * Stores the food into the persistance layer.
+     */
     save() {
         this.context.persistance.writeToLocalStorage(this.food.map(f => f.toJSON()));
     }

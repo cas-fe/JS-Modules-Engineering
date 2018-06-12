@@ -3,6 +3,9 @@ const FOOD_DELIVERY_TIME = 2000; // ms
 
 /**
  * Encapsulates the timing specific facilities.
+ *
+ * TIP: This class could be extended to a fully functional scheduler which
+ * provides events for all animals and their states.
  */
 class TimerEngine {
     /**
@@ -34,6 +37,12 @@ class TimerEngine {
         };
     }
 
+    /**
+     * Helper function to convert seconds into milliseconds.
+     *
+     * @param numSeconds
+     * @returns {number}
+     */
     static toMilliSeconds(numSeconds) {
         return (numSeconds * 1000);
     }

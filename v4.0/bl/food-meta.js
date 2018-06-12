@@ -1,5 +1,5 @@
 /**
- * Created by sgehrig on 03.06.2015.
+ * Handles the meta data for the available food.
  */
 class FoodMeta {
     constructor(name, amountPerDelivery, isMeet) {

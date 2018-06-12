@@ -14,11 +14,11 @@ function persist(toPersist) {
 }
 
 function readFromLocalStorage(toPersist) {
-    return JSON.parse(localStorage.getItem("foodStorage") || "[ ]");
+    return JSON.parse(localStorage.getItem("foodStorage_v32hbs") || "[ ]");
 }
 
 function writeToLocalStorage(toPersist) {
-    localStorage.setItem("foodStorage", JSON.stringify(toPersist));
+    localStorage.setItem("foodStorage_v32hbs", JSON.stringify(toPersist));
 }
 
 

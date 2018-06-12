@@ -1,6 +1,9 @@
 import Animal from './animal.js';
 import FOOD_META from "./food-meta.js";
 
+/**
+ * Represents the vegan Panda animal.
+ */
 class Panda extends Animal {
     constructor(context, id, name) {
         super(

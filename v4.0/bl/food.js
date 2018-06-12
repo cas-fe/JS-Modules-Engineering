@@ -1,5 +1,5 @@
 /**
- * Created by sgehrig on 03.06.2015.
+ * Specifies a food entry within the storage with a relation to the underlying META.
  */
 class Food {
     constructor(id, meta, stock) {
