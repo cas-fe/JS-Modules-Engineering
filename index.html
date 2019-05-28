@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<title>AJAX² OOD-Übung</title>
+		<meta name="robots" content="noindex, nofollow" />
+		<link rel="icon" href="./HSR.Template.Exercises/icon-document.png" type="image/png">
+
+		<link rel="stylesheet" type="text/css" href="./HSR.Template.Exercises/documentStyle.css">
+		<link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
+	</head>
+	<body>
+		<h1>
+			AJAX² OOD-Übung / Woche 11  - v0.4
+		</h1>
+
+		<h2>Ziele der Übung</h2>
+		<p>Vertiefen und praktisches Anwenden von Klassen und Modulen im Zusammehang mit dem Model-View-Controller Pattern.</p>
+  
+		<h2>Vorbereitung</h2>
+		<ul>
+			<li>Kopieren Sie die Aufgabe komplett auf Ihren Rechner.</li>
+			<li>Öffnen Sie eine Command Prompt (z.B. Windows Console, cmd.exe) und navigieren Sie in den Ordner "/vorlage"</li>
+			<li>Führen Sie den Command "npm install" aus um das npm-Paket mit dessen Abhängigkeiten zu installieren.</li>
+			<li>Starten Sie den Server mit "npm start"</li>
+			<li>Die Webseite ist unter <a href="http://localhost:3000/">http://localhost:3000/</a> erreichbar.</li>
+		</ul>
+
+		<h2>API</h2>
+		<p>Der Server gibt das zoo.html File zurück. Eine zusätzliche Server-API ist nicht notwendig.</p>
+
+		<h2>Ihre Aufgabe</h2>
+		<p>Sie finden die zwei Ausgangslagen in den Ordnern 'vorlage' sowie <span class="adv">'vorlage_adv'</span> vor. Die 'vorlage' enthält die für die Lernziele relevanten Übungen. <span class="adv">Falls Sie weitergehende/advanced Konzepte (DTO / Daten-Anbindung) ebenfalls vertiefen möchten, können Sie mit der 'vorlage_adv' starten</span>.</p>
+		<p>In der Übersicht: Führen Sie Klassen ein und verbessern Sie die Struktur der JavaScript basierten Applikation. Im Anschluss werden Sie sämtliche JavaScript Files als ES15 Module deklarieren.</p>
+		<ol>
+			<li>Strukturiertes JavaScript in Objekt-orientierte Klassen umbauen.</li>
+			<li>File-System Struktur aufgrund des Layerings (logische Gliederung der Komponenten) aufbauen.</li>
+			<li>Optional: Klassen in JavaScript Module platzieren und mittels Import-/Export-Syntax referenzieren.</li>
+		</ol>		
+
+		<p>Ihre Aufgabe ist es, den Programmcode wie oben definiert zu "verschönern" (refactoring).</p>
+		
+		<p>Hinweise:</p>
+		<ul>
+			<li>Wenn Sie beim Vorgehen unsicher sind, können Sie den TODOs in der Vorlage folgen. Diese definieren eine strukturierte Vorgehensweise, wie Sie die Übung lösen könnten.</li>
+			<li>Testen Sie Ihre Lösung nach jedem Schritt.</li>
+		</ul>
+
+		<h2>Mögliche Vorgehensweise</h2>
+		<p>
+			Step 1: Schauen Sie sich das File <code>bl.js</code> an.
+			<ul>
+				<li class="adv">(Advanced) Übersetzen Sie zuerst die Funktion <code>createFood()</code> in eine Klasse mit sämtlichen Eigenschaften (id, name, amount, ...). Leider verweigern nun die Funktionalitäten im data.js File ihren Dienst - denn diese können nur mit einfachen JavaScript Objekten (JavaScript Object Notation, JSON) umgehen. Erstellen Sie daher eine Methode toDto() sowie eine statische Methode fromDto(), welche genau diese Umwandlung vornehmen sollen (toDto = 'to Data Transfer Object': Objekt in JavaScript Notation bringen, fromDto = Food-Instanz aus JavaScript Object Notation erstellen). Stellen Sie sicher, dass Sie der <code>persist()</code>-Funktion immer einfache JavaScript Objekte übergeben; d.h. Konvertierung mit <code>toDto()</code>. Im <code>foodService</code> sollten Sie immer mit "echten" Food-Instanzen arbeiten (siehe <code>food</code>-Array im <code>foodService</code>); d.h. Konvertierung mit <code>fromDto()</code>.</li>
+				<li>Übersetzen Sie das <code>foodService</code>-Konstrukt in eine Klasse. Im Vergleich zum Object Literal's müssen Klassen instanziiert werden, platzieren Sie die Instanziierung ins <code>zoo-controller.js</code> (<code>const foodService = new FoodService()</code>) und verwenden Sie nun diese Variable im <code>zoo-controller.js</code>.</li>
+				<li>Gehen Sie bei der Übersetzung des <code>animalService</code>-Konstrukts analog zum Punkt <code>foodService</code> vor.</li>
+				<li class="adv">(Advanced) Das Konstrukt <code>createAnimal</code> soll als Basis-Klasse für die Lion/Panda's dienen. Übersetzen Sie <code>createAnimal</code> entsprechend in eine eigene Klasse. Legen Sie nun die Klasse <code>Lion</code> entsprechend zu <code>createPanda</code> an. Leiten Sie diese von <code>Animal</code> ab und überschrieben (overriding) Sie die notwendigen Attribute / Methoden.<br>Hinweis: Die Eigenschaft <code>animal.baseFeed</code> dient dazu, die Methode <code>feed()</code> der Animal-Struktur aufzurufen. Für Klassen-Strukturen können Sie die Basis-Funktionalität mittels <code>super</code> aufrufen, beispielsweise <code>super.feed()</code>. Verwenden Sie im Anschluss nicht mehr <code>createLion(...)</code> sondern <code>new Lion(...)</code> (d.h. anpassen des <code>AnimalService</code>).</li>
+				<li>Erstellen Sie die Klasse <code>Panda</code> aus dem Konstrukt in <code>createPanda</code> und leiten Sie Panda von <code>Animal</code> ab. Setzen Sie die notwendigen Attribute im Panda-Konstruktor. Passen Sie den <code>AnimalService</code> an, damit dieser nun <code>new Panda(...)</code> aufruft.</li>
+				<li class="adv">(Advanced) Packen Sie als nächstes die Funktionalität in <code>data.js</code> in eine eigene <code>FoodStorage</code> Klasse. Passen Sie den <code>FoodService</code> so an, dass dieser nicht mehr auf die globale <code>persist()</code> / <code>getAll()</code> Prozeduren zugreift, sondern nun über eine <code>FoodService</code> Instanz.</li>
+				<li>Instanziieren Sie den <code>FoodStorage</code> im <code>zoo-controller.js</code> und übergeben Sie die Instanz als Konstruktor-Argument dem <code>FoodService</code>. Somit ist der <code>FoodService</code> nicht für die Instanziierung der Daten-Persistenz zuständig (= lose Kopplung zwischen <code>FoodService</code> und <code>FoodStorage</code>).</li>
+				<li>Kapseln Sie nun die Features des <code>zoo-controller.js</code> Files in eine eigene Klasse. Definieren Sie die Konstanten als Eigenschaften auf der Klasse. Die Instanziierung des ZooControllers können Sie im boostrapper (<code>index.html</code>) vornehmen.</li>
+				<li>Erstellen Sie nun eine Klasse mit der Boostrapping-Logik (ursprünglich im <code>index.html</code> definiert). Platzieren Sie diese in ein neues File <code>bootstrapper.js</code>. Verschieben Sie nun die Instanziierung des <code>AnimalService</code>, <code>FoodService</code>, <code>FoodStorage</code> in den Bootstrapper. Die Kopplung zwischen den Services/Controllers ist entsprechend minimal, nur der Boostrapper weiss, wie diese zusammenhängen. Das <code>index.html</code> ist nun nur noch für den Start des Bootstrappers zuständig.</li>
+			</ul>
+		</p>
+		<p>
+			Step 2:
+			<ul>
+				<li>Erstellen Sie pro Klasse ein eigenes File. Benennen Sie die Files nach dem kebap-case Schema, beispielsweise wird die Klasse FoodStorage ins File food-storage.js platziert.</li>
+				<li>Bauen Sie die folgende Ordnerstruktur auf und platzieren Sie die Files entsprechend der logischen Zugehörigkeit. Passen Sie die Verlinkungen ebenfalls im <code>zoo.html</code> an.
+					<ul>
+						<li>scripts
+							<ul>
+								<li>bl <code class="list-description">(Model: "Business" Logic)</code></li>
+								<li>common <code class="list-description">(Global Helpers)</code></li>
+								<li>dl <code class="list-description">(Data Persistance / Data Access)</code></li>
+								<li>ui <code class="list-description">(UI Dependent Logic)</code>
+									<ul>
+										<li>controllers <code class="list-description">(Controller: UI &lt;-&gt; BL Connection)</code></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>stylesheets</li>
+						<li>zoo.html<code class="list-description">(View)</code></li>
+					</ul>
+				</li>
+			</ul>
+		</p>
+		<p>
+			Step 3: (Optional)
+			<ul>
+				<li>Ihre Lösung ist nun optimal vorbereitet für den Einsatz von ES15 Modules. Achtung: Ihre Lösung lässt sich bis zum kompletten Abschluss des Step 3 nicht mehr ausführen.</li>
+				<li>Definieren Sie die Files als Modules. Exportieren Sie die Klassen/Funktionen/Konstanten, welche von anderen Files wiederverwendet werden sollen.</li>
+				<li>Importieren Sie wo nötig die Klassen/Exports mittels Import-Syntax.</li>
+				<li>Deklarieren Sie ebenfalls den Bootstrapper-Aufruf im <code>zoo.html</code> im Module-Syntax.</li>
+				<li>Entfernen Sie schlussendlich die nicht mehr benötigten <code>script</code>-Tags im <code>zoo.html</code> File.</li>
+			</ul>
+		</p>
+
+		<h2>Lösung</h2>
+		<p>Eine mögliche Lösung ist im Ordner "solution_step2" sowie "solution_step3" abgelegt.</p>
+		<ul>				
+			<li>Öffnen Sie eine Command Prompt (z.B. Windows Console, cmd.exe) und navigieren Sie in den Ordner "vorlage".</li>
+			<li>Führen sie folgenden Command aus "npm install" um das npm-Paket mit dessen Abhängigkeiten zu installieren.</li>
+			<li>Starten Sie den Server mit "npm start".</li>
+			<li>Die Lösung ist unter <a href="http://localhost:3000/">http://localhost:3000/</a> erreichbar.</li>
+		</ul>
+	</body>
+</html>

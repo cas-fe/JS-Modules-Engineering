@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AJAX² - Zoo / Vorlage</title>
+    
+    <link rel="icon" href="./images/icon-document.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/documentStyle.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/style.css" >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
+    
+    <!--
+        TODO: Step 2
+        - Refactor file structure and define a single file per class.
+        - Use kebab-case for file naming, e.g. for class BusinessLayerService use buisness-layer-serivce.js .
+
+        TODO: Step 3
+        - Define all files/scripts as modules; use import/export syntax.
+    -->
+    <script src="scripts/utils.js" defer></script>
+    <script src="scripts/data.js" defer></script>
+    <script src="scripts/bl.js" defer></script>
+    <script src="scripts/zoo-controller.js" defer></script>
+
+    <script id="food-list-template" type="text/x-handlebars-template">
+    <header>
+        <h1>Food Storage</h1>
+    </header>
+    {{#each food}}
+        <div>
+            <span>{{name}} [amount: {{amount}}]</span>
+            <input type="button" value="Order" data-food-id="{{id}}" {{#if isOrderPending}}disabled{{/if}}>
+        </div>
+    {{/each}}
+    </script>
+    
+    <script id="animal-list-template" type="text/x-handlebars-template">
+    <header>
+        <h1>Animals</h1>
+    </header>
+    {{#each animals}}
+        <div>
+            <span>{{this}}</span>
+            {{#if foodRequired}}
+            <input type="button" value="Feed" data-animal-id="{{id}}">
+            {{/if}}
+        </div>
+    {{/each}}
+    {{#unless animals.length}}
+        No animal found.
+    {{/unless}}
+    </script>
+</head>
+<body>
+    <section class="card" id="food-container">
+    </section>
+    <section class="card" id="animal-container">
+    </section>
+    <section class="card">
+        <header>
+            <h1>Animal Management</h1>
+        </header>
+        <form id="new-animal-form">
+            <label>Animal name:
+                <input id="new-animal-name" placeholder="Type Name here..." minlength="3" required>
+            </label>
+            <button type="submit" data-action="addPanda">Create Panda</button>
+            <button type="submit" data-action="addLion">Create Lion</button>
+        </form>    
+    </section>
+
+    <script>
+        // TODO: Step 1
+        //  - Refactor facilities into a Bootstrapper class.
+        //  - Intention: Boot application and wire object instances.
+        const bootstrapper = {
+            start() {
+                document.addEventListener(
+                    'DOMContentLoaded',
+                    () => zooAction());
+            }
+        };
+        bootstrapper.start();
+	</script>
+</body>
+</html>
