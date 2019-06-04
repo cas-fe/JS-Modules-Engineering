@@ -2,23 +2,23 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>AJAX² - Zoo / Vorlage</title>
-    
+    <title>CAS FEE - Zoo / Vorlage</title>
+
+    <script src="scripts/utils.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
+
     <link rel="icon" href="./images/icon-document.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="./stylesheets/documentStyle.css">
     <link rel="stylesheet" type="text/css" href="./stylesheets/style.css" >
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
-    
     <!--
-        TODO: Step 2
-        - Refactor file structure and define a single file per class.
-        - Use kebab-case for file naming, e.g. for class BusinessLayerService use buisness-layer-serivce.js .
+        TODO: Step 1
+        - Refactor file structure and define a single file per object/factory method.
+        - Use kebab-case for file naming, e.g. for class BusinessLayerService use business-layer-service.js .
 
         TODO: Step 3
-        - Define all files/scripts as modules; use import/export syntax.
+        - Define Bootstrapper as module; other script tags (except handlebars/utils) can be removed because they're dynamically loaded according the {import} statements.
     -->
-    <script src="scripts/utils.js" defer></script>
     <script src="scripts/data.js" defer></script>
     <script src="scripts/bl.js" defer></script>
     <script src="scripts/zoo-controller.js" defer></script>
@@ -72,16 +72,26 @@
 
     <script>
         // TODO: Step 1
-        //  - Refactor facilities into a Bootstrapper class.
+        //  - Place Bootstrapper class into a new file in 'scripts/bootstrapper.js'.
         //  - Intention: Boot application and wire object instances.
-        const bootstrapper = {
-            start() {
+        // TODO: Step 3
+        //  - Use ES2015 module syntax: Export class Bootstrapper and import required dependencies (ZooController / FoodStorage / ...)
+        class Bootstrapper {
+            static start() {
                 document.addEventListener(
                     'DOMContentLoaded',
-                    () => zooAction());
+                    () => {
+                        // TODO: Step 2
+                        // - Put it all together: Wire data logic [dl], business logic [bl] and UI controller.
+                        //  > const foodDataStorage = new FoodStorage()
+                        //  > const foodService = new FoodService(foodDataStorage)
+                        //  > const animalService = new AnimalService()
+                        //  > new ZooController(foodService, animalService)
+                        new ZooController().zooAction();
+                    });
             }
-        };
-        bootstrapper.start();
+        }
+        Bootstrapper.start();
 	</script>
 </body>
 </html>

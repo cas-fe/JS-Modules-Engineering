@@ -1,6 +1,6 @@
 /**
  * Array Helper Function:
- * Extend Array prototype with a filter method.
+ * - Extend Array prototype with a filter method.
  */
 Array.prototype.findByName = function(name) {
     name = String(name);
@@ -10,24 +10,28 @@ Array.prototype.findByName = function(name) {
 /**
  * Public/static Helpers for conversion purposes.
  */
-const Convert = {
-    toMilliSeconds(tenSecondsTimeUnit) {
+class Convert {
+    static toMilliSeconds(tenSecondsTimeUnit) {
         return (tenSecondsTimeUnit * 10000);
     }
-};
+}
 
-function delay(timeoutInMs, delayedFunction) {
-    return new Promise((resolve, reject) => {
-        window.setTimeout(function() {
+/**
+ * Provides a simple and safe mechanism to execute code later.
+ */
+function delay(timeoutInMs, delayedFunction, errFunction) {
+    if (typeof(delayedFunction) === 'function') {
+        return window.setTimeout(function() {
             try {
-                if (typeof(delayedFunction) === 'function') {
-                    resolve(delayedFunction());
-                } else {
-                    resolve();
-                }
+                delayedFunction();
             } catch (err) {
-                reject(err);
+                if (typeof(errFunction) === 'function') {
+                    errFunction(err);
+                }
+                else {
+                    throw err;
+                }
             }
         }, timeoutInMs);
-    });
+    }
 }
