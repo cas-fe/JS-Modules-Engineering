@@ -1,14 +1,8 @@
-// TODO: Step 1
-//  - Move zoo-controller.js to a new file location 'scripts/ui/zoo-controller.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
-//  - Intention: Structure/bundle cohesive files as first step to modularization.
-// TODO: Step 2
-//  - Pass the animal-service and food-service as constructor arguments into constructor and save those arguments as instance fields (e.g. this.animalService / this.foodService).
-//  - Use those instance fields instead the global 'animalService' / 'foodService' variables.
-//  - Intention: Controls UI logic and forwards events to corresponding business services.
-// TODO: Step 3
-//  - Use ES2015 module syntax: Export class ZooController and import required dependencies
-class ZooController {
-    constructor() {
+export class ZooController {
+    constructor(foodService, animalService) {
+        this.foodService = foodService;
+        this.animalService = animalService;
+
         this.foodTemplateCompiled = Handlebars.compile(document.getElementById('food-list-template').innerHTML);
         this.animalTemplateCompiled = Handlebars.compile(document.getElementById('animal-list-template').innerHTML);
 
@@ -19,11 +13,11 @@ class ZooController {
     }
 
     showAnimals() {
-        this.animalContainer.innerHTML = this.animalTemplateCompiled({animals: animalService.animals});
+        this.animalContainer.innerHTML = this.animalTemplateCompiled({animals: this.animalService.animals});
     }
 
     showFood() {
-        this.foodContainer.innerHTML = this.foodTemplateCompiled({food: foodService.food});
+        this.foodContainer.innerHTML = this.foodTemplateCompiled({food: this.foodService.food});
     }
 
     initEventHandlers() {
@@ -34,7 +28,7 @@ class ZooController {
             if (!isNaN(foodId)) {
                 event.target.setAttribute('disabled', true);
 
-                foodService.orderFoodById(foodId);
+                this.foodService.orderFoodById(foodId);
                 this.showFood();
                 event.target.removeAttribute('disabled');
             }
@@ -44,8 +38,8 @@ class ZooController {
             const animalId = Number(event.target.dataset.animalId);
 
             if (!isNaN(animalId)) {
-                const feedingSucceeded = animalService.animals[animalId].feed(
-                    {food: foodService.food, animals: animalService.animals},
+                const feedingSucceeded = this.animalService.animals[animalId].feed(
+                    {food: this.foodService.food, animals: this.animalService.animals},
                     () => this.renderZooView());
 
                 if (feedingSucceeded) {
@@ -58,8 +52,8 @@ class ZooController {
 
         this.newAnimalForm.addEventListener('submit', (event) => {
             const createAction = document.activeElement.dataset.action;
-            if (document.activeElement && animalService[createAction]) {
-                animalService[createAction](this.newAnimalName.value);
+            if (document.activeElement && this.animalService[createAction]) {
+                this.animalService[createAction](this.newAnimalName.value);
                 this.showAnimals();
             }
             event.preventDefault();
@@ -73,7 +67,7 @@ class ZooController {
 
     zooAction() {
         this.initEventHandlers();
-        foodService.loadData();
+        this.foodService.loadData();
         this.renderZooView();
     }
 }

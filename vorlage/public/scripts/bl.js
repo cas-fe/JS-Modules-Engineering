@@ -36,11 +36,12 @@ function createFood(id, name, amount, amountPerDelivery, isMeet) {
 // TODO: Step 3
 //  - Use ES2015 module syntax: Export class FoodService and import dependencies (e.g. Food)
 const foodService = {
+    storage: createStorage(),
     food: [ ],
 
     loadData() {
         this.foodOrderTime = 2000; // ms
-        this.food = storage.getAll().map(f => createFood(f.id, f.name, f.amount, f.amountPerDelivery, f.isMeet));
+        this.food = this.storage.getAll().map(f => createFood(f.id, f.name, f.amount, f.amountPerDelivery, f.isMeet));
 
         if (this.food.length === 0) { // initial data seed
             this.food.push(createFood(0, 'bamboo', 3, 3));
@@ -53,7 +54,7 @@ const foodService = {
     },
 
     save() {
-        storage.update(this.food.map(f => f.toJSON()));
+        this.storage.update(this.food.map(f => f.toJSON()));
     },
 
     orderFoodById(foodId) {
