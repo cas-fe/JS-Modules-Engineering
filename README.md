@@ -1,4 +1,4 @@
-# CAS FEE - OOD-Übung / v0.5
+# CAS FEE - OOD-Übung
 
 ## Ziele der Übung
 Vertiefen und praktisches Anwenden von Klassen und Modulen im Zusammehang mit dem Model-View-Controller Pattern.
@@ -11,4 +11,4 @@ Vertiefen und praktisches Anwenden von Klassen und Modulen im Zusammehang mit de
 * Die Webseite ist unter http://localhost:3000/ erreichbar.
 
 ## Übungen
-Die Beschreibung der Übungen findet sich im index.html.
+Die Beschreibung der Übungen findet sich im [index.html](index.html).
