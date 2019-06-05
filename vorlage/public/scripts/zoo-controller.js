@@ -1,5 +1,6 @@
 // TODO: Step 1
 //  - Move zoo-controller.js to a new file location 'scripts/ui/zoo-controller.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
+//  - Analyze code: Is there any long method inside ZooController? How could you refactor that lines of code?
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
 //  - Pass the animal-service and food-service as constructor arguments into constructor and save those arguments as instance fields (e.g. this.animalService / this.foodService).

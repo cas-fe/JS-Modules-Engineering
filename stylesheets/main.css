@@ -5,3 +5,16 @@
 .adv {
     color: darkblue;
 }
+
+section {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+details {
+    margin-top: 10px;
+}
+
+summary:hover {
+    cursor: pointer;
+}

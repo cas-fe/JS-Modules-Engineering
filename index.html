@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<h1>
-			CAS FEE - OOD-Übung / v0.5
+			CAS FEE - OOD-Übung / v0.6
 		</h1>
 
 		<h2>Ziele der Übung</h2>
@@ -29,9 +29,8 @@
 		<h2>API</h2>
 		<p>Der Server gibt das zoo.html File zurück. Eine zusätzliche Server-API ist nicht notwendig.</p>
 
-		<h2>Ihre Aufgabe</h2>
-		<p>Sie finden die Ausgangslage im Ordner 'vorlage' vor.</p>
-		<p>In der Übersicht: In den folgenden Übungen werden Sie eine bestehende Applikation strukturieren und schrittweise modularisieren. Dabei gilt es das JavaScript OOP-Handwerk zu üben und in einem praxisnahen Umfeld einzusetzen.</p>
+		<h2>Lernziele</h2>
+		<p>In den folgenden Übungen werden Sie eine bestehende Applikation strukturieren und schrittweise modularisieren. Dabei gilt es das JavaScript OOP-Handwerk zu üben und in einem praxisnahen Umfeld einzusetzen.</p>
 		<ol>
 			<li>Bestehenden Code auf File-System Basis gemäss Layering strukturieren (logische Gliederung der JavaScript-Konstrukte).</li>
 			<li>Strukturiertes (objektbasiertes) JavaScript in objektorientierte Klassen umbauen.</li>
@@ -40,17 +39,25 @@
 
 		<p>Ihre Aufgabe ist es also, den bestehenden Programmcode in der Vorlage zu "verschönern" (refactoring).</p>
 
-		<h3>Hinweise</h3>
-		<ul>
-			<li>Wenn Sie beim Vorgehen unsicher sind, können Sie den TODOs in der Vorlage folgen. Diese definieren eine strukturierte Vorgehensweise, wie Sie die Übung lösen könnten.</li>
-			<li>Die Lösungen befinden sich jeweils im Ordner 'solutions-exercise<code>Nr</code>', wobei <code>Nr</code> für die aktuelle Übungsnummer steht. Bei Unklarheiten kann die Lösung ebenfalls zurate gezogen werden.</li>
-			<li>Falls Sie mit der vorherigen Lösung noch nicht fertig sind, können Sie auch mit der letzten Lösung aus dem Ordner 'solutions-exercise<code>Nr</code>' fortfahren.</li>
-			<li>Um eingeschlichene Fehler möglichst effizient zu erkennen, sollten Sie Ihre Lösung in möglichst granularen Schritten testen.</li>
-		</ul>
+		<section>
+			<header>
+				<h3>Hinweise</h3>
+			</header>
+			Sie finden die Ausgangslage im Ordner 'vorlage' vor. Die zu bearbeitenden Files befinden sich im Ordner 'public' bzw. 'public/scripts'.
+			<ul>
+				<li>Wenn Sie beim Vorgehen unsicher sind, können Sie den TODOs in der Vorlage folgen. Diese definieren eine strukturierte Vorgehensweise, wie Sie die Übung lösen könnten.</li>
+				<li>Die Lösungen befinden sich jeweils im Ordner 'solutions-exercise<code>Nr</code>', wobei <code>Nr</code> für die aktuelle Übungsnummer steht. Bei Unklarheiten kann die Lösung ebenfalls zurate gezogen werden.</li>
+				<li>Falls Sie mit der vorherigen Lösung noch nicht fertig sind, können Sie auch mit der letzten Lösung aus dem Ordner 'solutions-exercise<code>Nr</code>' fortfahren.</li>
+				<li>Um eingeschlichene Fehler möglichst effizient zu erkennen, sollten Sie Ihre Lösung in möglichst granularen Schritten testen.</li>
+			</ul>
+		</section>
 
-		<h2>Mögliche Vorgehensweise</h2>
-		<p>
-			<h3>Exercise 1</h3>
+
+		<h2>Aufgaben</h2>
+		<section>
+			<header>
+				<h3>Exercise 1</h3>
+			</header>
 			In dieser Übung werden Sie sich mit der Vorlage vertraut machen und die verwendeten JavaScript Konstrukte innerhalb der Applikation analysieren. Sie finden die Tipps unter <code>// TODO: Step 1</code>.
 			<ul>
 				<li>Erstellen Sie pro Konstrukt/Funktion ein eigenes File. Benennen Sie die Files nach dem kebap-case Schema, beispielsweise wird die Klasse FoodStorage ins File food-storage.js platziert.</li>
@@ -73,22 +80,29 @@
 					</ul>
 				</li>
 			</ul>
-		</p>
-		<p>
-			<h3>Exercise 2</h3>
+		</section>
+		<section>
+			<header>
+				<h3>Exercise 2</h3>
+			</header>
 			Bauen Sie die objektbasierten Konstrukte in echte Klassen und Objekte um. Sie finden die Tipps unter <code>// TODO: Step 2</code>.
-			<ul>
-				<li>Übersetzen Sie zuerst die Funktion <code>createFood()</code> in eine Klasse mit sämtlichen Instanzfeldern/Eigenschaften (id, name, amount, ...). Verwenden Sie nun im <code>food-service.js</code> den Konstruktor <code>new Food(...)</code> anstatt <code>createFood(...)</code>.</li>
-				<li>Übersetzen Sie das <code>foodService</code>-Konstrukt in eine Klasse. Im Vergleich zu Object Literal's müssen Klassen instanziiert werden, platzieren Sie die Instanziierung in die Methode start() des Bootstrappers (<code>const foodService = new FoodService()</code>). Übergeben Sie den <code>foodService</code> dem <code>ZooController</code> als Konstruktor-Argument. Speichern Sie den <code>foodService</code> als Instanzfeld/Eigenschaft im <code>ZooController</code> und ersetzen Sie die globalen Zugriffe auf <code>foodService</code> durch den Zugriff auf die <code>foodService</code>-Eigenschaft.</li>
-				<li>Gehen Sie bei der Übersetzung des <code>animalService</code>-Konstrukts analog zum Punkt <code>foodService</code> vor.</li>
-				<li>Das Konstrukt <code>createAnimal</code> soll als Basis-Klasse für die Lion/Panda's dienen. Übersetzen Sie <code>createAnimal</code> entsprechend in eine eigene Klasse. Legen Sie nun die Klasse <code>Lion</code> entsprechend zu <code>createPanda</code> an. Leiten Sie diese von <code>Animal</code> ab und überschreiben (overriding) Sie die notwendigen Attribute / Methoden. Verwenden Sie im Anschluss nicht mehr <code>createLion(...)</code> sondern <code>new Lion(...)</code> (d.h. anpassen des <code>AnimalService</code>).</li>
-				<li>Erstellen Sie die Klasse <code>Panda</code> aus dem Konstrukt in <code>createPanda</code> und leiten Sie Panda von <code>Animal</code> ab. Setzen Sie die notwendigen Attribute im Panda-Konstruktor. Passen Sie den <code>AnimalService</code> an, damit dieser nun <code>new Panda(...)</code> aufruft.</li>
-				<li>Packen Sie als nächstes die Funktionalität in <code>food-storage.js</code> in eine eigene <code>FoodStorage</code> Klasse.</li>
-				<li>Instanziieren Sie den <code>FoodStorage</code> im Bootstrapper, übergeben Sie die Instanz als Konstruktor-Argument dem <code>FoodService</code> und speichern Sie den <code>foodStorage</code> Parameter in das <code>storage</code> Instanzfeld/Eigenschaft.</li>
-			</ul>
-		</p>
-		<p>
-			<h3>Exercise 3</h3>
+			<details>
+				<summary>Mögliche Vorgehensweise</summary>
+				<ul>
+					<li>Übersetzen Sie zuerst die Funktion <code>createFood()</code> in eine Klasse mit sämtlichen Instanzfeldern/Eigenschaften (id, name, amount, ...). Verwenden Sie nun im <code>food-service.js</code> den Konstruktor <code>new Food(...)</code> anstatt <code>createFood(...)</code>.</li>
+					<li>Übersetzen Sie das <code>foodService</code>-Konstrukt in eine Klasse. Im Vergleich zu Object Literal's müssen Klassen instanziiert werden, platzieren Sie die Instanziierung in die Methode start() des Bootstrappers (<code>const foodService = new FoodService()</code>). Übergeben Sie den <code>foodService</code> dem <code>ZooController</code> als Konstruktor-Argument. Speichern Sie den <code>foodService</code> als Instanzfeld/Eigenschaft im <code>ZooController</code> und ersetzen Sie die globalen Zugriffe auf <code>foodService</code> durch den Zugriff auf die <code>foodService</code>-Eigenschaft.</li>
+					<li>Gehen Sie bei der Übersetzung des <code>animalService</code>-Konstrukts analog zum Punkt <code>foodService</code> vor.</li>
+					<li>Das Konstrukt <code>createAnimal</code> soll als Basis-Klasse für die Lion/Panda's dienen. Übersetzen Sie <code>createAnimal</code> entsprechend in eine eigene Klasse. Legen Sie nun die Klasse <code>Lion</code> entsprechend zu <code>createLion</code> an. Leiten Sie diese von <code>Animal</code> ab und überschreiben (overriding) Sie die notwendigen Attribute / Methoden. Verwenden Sie im Anschluss nicht mehr <code>createLion(...)</code> sondern <code>new Lion(...)</code> (d.h. anpassen des <code>AnimalService</code>).</li>
+					<li>Erstellen Sie die Klasse <code>Panda</code> aus dem Konstrukt in <code>createPanda</code> und leiten Sie Panda von <code>Animal</code> ab. Setzen Sie die notwendigen Attribute im Panda-Konstruktor. Passen Sie den <code>AnimalService</code> an, damit dieser nun <code>new Panda(...)</code> aufruft.</li>
+					<li>Überführen Sie als nächstes die Funktionalität in <code>food-storage.js</code> in eine eigene <code>FoodStorage</code> Klasse.</li>
+					<li>Instanziieren Sie den <code>FoodStorage</code> im Bootstrapper, übergeben Sie die Instanz als Konstruktor-Argument dem <code>FoodService</code> und speichern Sie den <code>foodStorage</code> Parameter in das <code>storage</code> Instanzfeld/Eigenschaft.</li>
+				</ul>
+			</details>
+		</section>
+		<section>
+			<header>
+				<h3>Exercise 3</h3>
+			</header>
 			Führen Sie nun ES2015 Modules ein. Sie finden die Tipps unter <code>// TODO: Step 3</code>.
 			<ul>
 				<li>Ihre Lösung ist nun optimal vorbereitet für den Einsatz von ES2015 Modules. Achtung: Ihre Lösung lässt sich bis zum kompletten Abschluss des Step 3 nicht mehr ausführen.</li>
@@ -97,7 +111,22 @@
 			<li>Deklarieren Sie ebenfalls den Bootstrapper-Aufruf im <code>zoo.html</code> im <code>&lt;script type="module"&gt;</code>-Syntax.</li>
 				<li>Entfernen Sie schlussendlich die nicht mehr benötigten <code>script</code>-Tags im <code>zoo.html</code> File.</li>
 			</ul>
-		</p>
+		</section>
+		<section>
+			<header>
+				<h3>Additional Exercise (optional)</h3>
+			</header>
+			Gibt es weitere Punkte, welche man verbessern könnte?
+			<details>
+				<summary>Ansatzpunkte</summary>
+				<ul>
+					<li>Platzieren Sie die Business Klassen (Panda / Animal / Lion / ...) in einen eigenen "models" Ordner.</li>
+					<li>Lagern Sie den Data-Seed aus. Nur der Bootstrapper soll den Seed vornehmen, falls sich noch keine Daten im Storage befinden.</li>
+					<li>Fassen Sie die Logik von <code>createLion()</code> / <code>createPanda()</code> (AnimalService Klasse) in eine parametrisierbare Methode zusammen.</li>
+					<li>Verwenden Sie anstatt Callbacks die ES2017 Konstrukte <code>async/await</code>. Diese Konstrukte werden in den folgenden Lektionen noch behandelt.</li>
+				</ul>
+			</details>
+		</section>
 
 		<h2>Lösung</h2>
 		<p>Eine mögliche Komplettlösung ist im Ordner "solution-exercise3" abgelegt.</p>
