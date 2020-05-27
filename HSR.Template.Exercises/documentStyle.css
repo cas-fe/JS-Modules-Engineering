@@ -123,6 +123,10 @@ th a {
 td {
 	text-align: center;
 }
+td[data-text] {
+	text-align: unset;
+	background: white;
+}
 thead th {
 	padding-left: 1rem;
 	padding-right: 1rem;
