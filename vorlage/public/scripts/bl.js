@@ -29,7 +29,7 @@ function createFood(id, name, amount, amountPerDelivery, isMeet) {
 
 
 // TODO: Step 1
-//  - Place foodService constant into a new file in 'scripts/bl/food-service.js'. Reference 'scripts/bl/food-service.js' in zoo.html.
+//  - Place foodService constant into a new file ('scripts/bl/food-service.js'). Reference 'scripts/bl/food-service.js' in zoo.html.
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
 //  - Create class FoodService; use 'new FoodService(storage)' in Bootstrapper.
