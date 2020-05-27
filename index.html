@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<h1>
-			CAS FEE - OOD-Übung / v0.6
+			CAS FEE - OOD-Übung / v0.7
 		</h1>
 
 		<h2>Ziele der Übung</h2>
@@ -23,13 +23,13 @@
 			<li>Öffnen Sie eine Command Prompt (z.B. Windows Console, cmd.exe) und navigieren Sie in den Ordner "/vorlage"</li>
 			<li>Führen Sie den Command "npm install" aus um das npm-Paket mit dessen Abhängigkeiten zu installieren.</li>
 			<li>Starten Sie den Server mit "npm start"</li>
-			<li>Die Webseite ist unter <a href="http://localhost:3000/">http://localhost:3000/</a> erreichbar.</li>
+			<li>Die Webseite ist unter <a href="http://localhost:3000/" target="_blank">http://localhost:3000/</a> erreichbar.</li>
 		</ul>
 
 		<h2>API</h2>
-		<p>Der Server gibt das zoo.html File zurück. Eine zusätzliche Server-API ist nicht notwendig.</p>
+		<p>Der Server gibt das zoo.html File im Ordner vorlage/public zurück. Eine zusätzliche Server-API ist nicht notwendig.</p>
 
-		<h2>Lernziele</h2>
+		<h2>Lern- und Handlungsziele</h2>
 		<p>In den folgenden Übungen werden Sie eine bestehende Applikation strukturieren und schrittweise modularisieren. Dabei gilt es das JavaScript OOP-Handwerk zu üben und in einem praxisnahen Umfeld einzusetzen.</p>
 		<ol>
 			<li>Bestehenden Code auf File-System Basis gemäss Layering strukturieren (logische Gliederung der JavaScript-Konstrukte).</li>
@@ -60,7 +60,7 @@
 			</header>
 			In dieser Übung werden Sie sich mit der Vorlage vertraut machen und die verwendeten JavaScript Konstrukte innerhalb der Applikation analysieren. Sie finden die Tipps unter <code>// TODO: Step 1</code>.
 			<ul>
-				<li>Erstellen Sie pro Konstrukt/Funktion ein eigenes File. Benennen Sie die Files nach dem kebap-case Schema, beispielsweise wird die Klasse FoodStorage ins File food-storage.js platziert.</li>
+				<li>Erstellen Sie pro Modul (Klassenkonstrukt) / Funktion ein eigenes File. Benennen Sie die Files nach dem kebap-case Schema, beispielsweise wird die Klasse FoodStorage ins File food-storage.js platziert.</li>
 				<li>Bauen Sie die folgende Ordnerstruktur auf und platzieren Sie die Files entsprechend der logischen Zugehörigkeit. Platzieren Sie die Verlinkungen ebenfalls im <code>zoo.html</code>.
 					<ul>
 						<li>scripts
@@ -89,8 +89,8 @@
 			<details>
 				<summary>Mögliche Vorgehensweise</summary>
 				<ul>
-					<li>Übersetzen Sie zuerst die Funktion <code>createFood()</code> in eine Klasse mit sämtlichen Instanzfeldern/Eigenschaften (id, name, amount, ...). Verwenden Sie nun im <code>food-service.js</code> den Konstruktor <code>new Food(...)</code> anstatt <code>createFood(...)</code>.</li>
-					<li>Übersetzen Sie das <code>foodService</code>-Konstrukt in eine Klasse. Im Vergleich zu Object Literal's müssen Klassen instanziiert werden, platzieren Sie die Instanziierung in die Methode start() des Bootstrappers (<code>const foodService = new FoodService()</code>). Übergeben Sie den <code>foodService</code> dem <code>ZooController</code> als Konstruktor-Argument. Speichern Sie den <code>foodService</code> als Instanzfeld/Eigenschaft im <code>ZooController</code> und ersetzen Sie die globalen Zugriffe auf <code>foodService</code> durch den Zugriff auf die <code>foodService</code>-Eigenschaft.</li>
+					<li>Die Funktion <code>createFood()</code> gibt ein neues untypifiziertes Objekt zurück. Die Implementation der <code>createFood()</code> Funktion wäre ein klassischer Anwendungsfall für eine Klasse. Übersetzen Sie nun <code>createFood()</code> in eine Klasse mit sämtlichen Instanzfeldern/Eigenschaften (id, name, amount, ...) des ursprünglich untypifizierten Objektes. Verwenden Sie nun im <code>food-service.js</code> den Konstruktor der erstellten Klasse (z.B. <code>new Food(...)</code> anstatt <code>createFood(...)</code>).</li>
+					<li>Übersetzen Sie das <code>foodService</code>-Konstrukt in eine Klasse. Im Vergleich zu Object Literal's müssen Klassen instanziiert werden. Platzieren Sie die Instanziierung in die Methode start() des Bootstrappers (<code>const foodService = new FoodService()</code>). Übergeben Sie den <code>foodService</code> dem <code>ZooController</code> als Konstruktor-Argument. Speichern Sie den <code>foodService</code> als Instanzfeld/Eigenschaft im <code>ZooController</code> und ersetzen Sie die globalen Zugriffe auf <code>foodService</code> durch den Zugriff auf die <code>foodService</code>-Eigenschaft.</li>
 					<li>Gehen Sie bei der Übersetzung des <code>animalService</code>-Konstrukts analog zum Punkt <code>foodService</code> vor.</li>
 					<li>Das Konstrukt <code>createAnimal</code> soll als Basis-Klasse für die Lion/Panda's dienen. Übersetzen Sie <code>createAnimal</code> entsprechend in eine eigene Klasse. Legen Sie nun die Klasse <code>Lion</code> entsprechend zu <code>createLion</code> an. Leiten Sie diese von <code>Animal</code> ab und überschreiben (overriding) Sie die notwendigen Attribute / Methoden. Verwenden Sie im Anschluss nicht mehr <code>createLion(...)</code> sondern <code>new Lion(...)</code> (d.h. anpassen des <code>AnimalService</code>).</li>
 					<li>Erstellen Sie die Klasse <code>Panda</code> aus dem Konstrukt in <code>createPanda</code> und leiten Sie Panda von <code>Animal</code> ab. Setzen Sie die notwendigen Attribute im Panda-Konstruktor. Passen Sie den <code>AnimalService</code> an, damit dieser nun <code>new Panda(...)</code> aufruft.</li>
@@ -105,10 +105,10 @@
 			</header>
 			Führen Sie nun ES2015 Modules ein. Sie finden die Tipps unter <code>// TODO: Step 3</code>.
 			<ul>
-				<li>Ihre Lösung ist nun optimal vorbereitet für den Einsatz von ES2015 Modules. Achtung: Ihre Lösung lässt sich bis zum kompletten Abschluss des Step 3 nicht mehr ausführen.</li>
+				<li>Ihre Lösung ist nach Exercise 2 optimal vorbereitet für den Einsatz von ES2015 Modules. Achtung: Ihre Lösung lässt sich bis zum kompletten Abschluss des Step 3 nicht mehr ausführen.</li>
 				<li>Definieren Sie die Files als Modules. Exportieren Sie die Klassen, welche von anderen Files wiederverwendet werden sollen.</li>
 				<li>Importieren Sie wo nötig die Klassen mittels Import-Syntax.</li>
-			<li>Deklarieren Sie ebenfalls den Bootstrapper-Aufruf im <code>zoo.html</code> im <code>&lt;script type="module"&gt;</code>-Syntax.</li>
+				<li>Deklarieren Sie ebenfalls den Bootstrapper-Aufruf im <code>zoo.html</code> im <code>&lt;script type="module"&gt;</code>-Syntax.</li>
 				<li>Entfernen Sie schlussendlich die nicht mehr benötigten <code>script</code>-Tags im <code>zoo.html</code> File.</li>
 			</ul>
 		</section>
@@ -121,7 +121,7 @@
 				<summary>Ansatzpunkte</summary>
 				<ul>
 					<li>Platzieren Sie die Business Klassen (Panda / Animal / Lion / ...) in einen eigenen "models" Ordner.</li>
-					<li>Lagern Sie den Data-Seed aus. Nur der Bootstrapper soll den Seed vornehmen, falls sich noch keine Daten im Storage befinden.</li>
+					<li>Lagern Sie den Data-Seed'er aus. Nur der Bootstrapper soll den Seed vornehmen, falls sich noch keine Daten im Storage befinden.</li>
 					<li>Fassen Sie die Logik von <code>createLion()</code> / <code>createPanda()</code> (AnimalService Klasse) in eine parametrisierbare Methode zusammen.</li>
 					<li>Verwenden Sie anstatt Callbacks die ES2017 Konstrukte <code>async/await</code>. Diese Konstrukte werden in den folgenden Lektionen noch behandelt.</li>
 				</ul>
