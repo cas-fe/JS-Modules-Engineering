@@ -1,6 +1,14 @@
+:root {
+	--main-color: #8c195f;
+	--solution-primary: seagreen;
+	--solution-secondary: lightgreen;
+}
+
 html, body {
 	padding: 0;
 	margin: 0;
+	width: 100%;
+	height: 100%;
 }
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -16,10 +24,9 @@ body {
 /* headings */
 h1 {
 	color: white;
-	background: rgb(0, 96, 160);
+	background: var(--main-color);
 	padding: 1rem;
 	margin: -1rem -1rem 1rem -1rem;
-	counter-reset: section;
 }
 h1 > a.backlink {
 	margin-right: 0.5rem;
@@ -32,38 +39,28 @@ h1 > a.backlink:visited, h1 > a.backlink:link {
 }
 h2 {
 	margin-top: 2rem;
-	border-bottom: 1px solid darkgray;
 }
-h2::before {
+h2:before {
 	counter-increment: section;
 	content: counter(section);
 	margin-right: 0.5rem; padding: 0.5rem;
-}
-h3 {
-	display: inline-block;
-	border-bottom: 1px solid darkgray;
 }
 
 
 /* solutions */
 .solution {
 	background: lightcyan;
-	border: 0.1rem solid seagreen;
+	border: 0.1rem solid var(--solution-primary);
 	border-radius: 0.2rem;
 	margin: 0.5rem;
 	clear: both;
 	display: none;
 }
-.solution pre.prettyprint, .solution pre {
-	margin: 0.5rem;
-	background: white;
-	border-color: RGB(220, 220, 220);
-}
 body[data-show-solutions] .solution { display: block; }
 .solution > * { padding: 0.5rem; margin: 0; }
-.solution::before {
+.solution:before {
 	content: "Lösung";
-	background: seagreen;
+	background: var(--solution-primary);
 	color: white;
 	padding: 0.5rem;
 	width: 100%;
@@ -76,7 +73,7 @@ body[data-show-solutions] .solution { display: block; }
 /* code */
 pre code {
 	background: black;
-	color: lightgreen;
+	color: var(--solution-secondary);
 	font-weight: bold;
 	padding: 0.5rem;
 	display: block;
@@ -99,7 +96,7 @@ img[data-type="icon-difficult"] {
 
 blockquote {
 	padding: 10px;
-	border: thin solid blue;
+	border: thin solid var(--main-color);
 }
 
 
@@ -114,7 +111,7 @@ th, td {
 	padding: 0.25rem 0.5rem;
 }
 th {
-	background: rgb(0, 96, 160);
+	background: var(--main-color);
 	color: white;
 }
 th a {
@@ -122,10 +119,6 @@ th a {
 }
 td {
 	text-align: center;
-}
-td[data-text] {
-	text-align: unset;
-	background: white;
 }
 thead th {
 	padding-left: 1rem;
@@ -138,7 +131,8 @@ tbody th {
 
 /* lists */
 ul, ol {
-	padding-left: 1.1rem;
+	padding-left: 0;
+	list-style-position: inside;
 }
 ul {
 	list-style-type: circle;
@@ -147,9 +141,10 @@ ol {
 	list-style: upper-alpha;
 }
 ul li, ol li {
+	list-style-position: inside;
 }
 ul ul, ul ol, ol ul, ol ol {
-	padding-left: 1.1rem;
+	padding-left: 1rem;
 }
 ol ol {
 	list-style-type: lower-roman;
@@ -157,6 +152,14 @@ ol ol {
 li > pre {
 	margin: 0;
 	padding: 0;
+}
+
+a {
+	color: var(--main-color);
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
 }
 
 dl {
@@ -181,9 +184,14 @@ dl dd {
 #showSolutions {
 	float: right;
 	font-size: 1.2rem;
-	background: linear-gradient(lightgreen, green);
+	background: linear-gradient(var(--solution-secondary), var(--solution-primary));
 	padding: 0.5rem 1rem;
 	border: none;
 	border-radius: 2rem;
 	color: white;
+}
+
+section {
+	margin: 0;
+	padding-bottom: 1em;
 }
