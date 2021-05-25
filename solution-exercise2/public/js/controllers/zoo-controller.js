@@ -1,8 +1,7 @@
-export class ZooController {
-    constructor(foodService, animalService) {
-        this.foodService = foodService;
-        this.animalService = animalService;
-
+// TODO: Step 3
+//  - Use ES2015 module syntax: Export class ZooController and import required dependencies
+class ZooController {
+    constructor() {
         this.foodTemplateCompiled = Handlebars.compile(document.getElementById('food-list-template').innerHTML);
         this.animalTemplateCompiled = Handlebars.compile(document.getElementById('animal-list-template').innerHTML);
 
@@ -13,11 +12,15 @@ export class ZooController {
     }
 
     showAnimals() {
-        this.animalContainer.innerHTML = this.animalTemplateCompiled({animals: this.animalService.animals});
+        this.animalContainer.innerHTML = this.animalTemplateCompiled(
+            {animals: animalService.animals},
+            {allowProtoPropertiesByDefault: true});
     }
 
     showFood() {
-        this.foodContainer.innerHTML = this.foodTemplateCompiled({food: this.foodService.food});
+        this.foodContainer.innerHTML = this.foodTemplateCompiled(
+            {food: foodService.food},
+            {allowProtoPropertiesByDefault: true});
     }
 
     initEventHandlers() {
@@ -28,7 +31,7 @@ export class ZooController {
             if (!isNaN(foodId)) {
                 event.target.setAttribute('disabled', true);
 
-                this.foodService.orderFoodById(foodId);
+                foodService.orderFoodById(foodId);
                 this.showFood();
                 event.target.removeAttribute('disabled');
             }
@@ -38,8 +41,8 @@ export class ZooController {
             const animalId = Number(event.target.dataset.animalId);
 
             if (!isNaN(animalId)) {
-                const feedingSucceeded = this.animalService.animals[animalId].feed(
-                    {food: this.foodService.food, animals: this.animalService.animals},
+                const feedingSucceeded = animalService.animals[animalId].feed(
+                    {food: foodService.food, animals: animalService.animals},
                     () => this.renderZooView());
 
                 if (feedingSucceeded) {
@@ -52,8 +55,8 @@ export class ZooController {
 
         this.newAnimalForm.addEventListener('submit', (event) => {
             const createAction = document.activeElement.dataset.action;
-            if (document.activeElement && this.animalService[createAction]) {
-                this.animalService[createAction](this.newAnimalName.value);
+            if (document.activeElement && animalService[createAction]) {
+                animalService[createAction](this.newAnimalName.value);
                 this.showAnimals();
             }
             event.preventDefault();
@@ -65,9 +68,12 @@ export class ZooController {
         this.showFood();
     }
 
-    zooAction() {
+    initialize() {
         this.initEventHandlers();
-        this.foodService.loadData();
+        foodService.loadData();
         this.renderZooView();
     }
 }
+
+// create one-and-only instance
+new ZooController().initialize();

@@ -10,7 +10,7 @@ export class Lion extends Animal {
         ];
     }
 
-    // override behavoir of generic animal (place as members inside Lion class)
+    // override behaviour of generic animal (place as members inside Lion class)
     feed(eatable, callback) {
         if (!this.feedInternal(eatable, callback)) {
             const panda = eatable.animals.filter(p => {

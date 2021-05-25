@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <title>CAS FEE - Zoo / Vorlage</title>
 
-    <script src="scripts/utils.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" defer></script>
 
     <link rel="icon" href="./images/icon-document.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="./stylesheets/documentStyle.css">
     <link rel="stylesheet" type="text/css" href="./stylesheets/style.css" >
 
-    <script src="scripts/dl/food-storage.js" defer></script>
-    <script src="scripts/bl/animal.js" defer></script>
-    <script src="scripts/bl/animal-service.js" defer></script>
-    <script src="scripts/bl/food.js" defer></script>
-    <script src="scripts/bl/food-service.js" defer></script>
-    <script src="scripts/bl/lion.js" defer></script>
-    <script src="scripts/bl/panda.js" defer></script>
-    <script src="scripts/ui/zoo-controller.js" defer></script>
+    <script src="js/services/data/food-storage.js" defer></script>
+    <script src="js/services/animal.js" defer></script>
+    <script src="js/services/animal-service.js" defer></script>
+    <script src="js/services/food.js" defer></script>
+    <script src="js/services/food-service.js" defer></script>
+    <script src="js/services/lion.js" defer></script>
+    <script src="js/services/panda.js" defer></script>
 
     <!--
         TODO: Step 3
         - Define Bootstrapper as module; other script tags (except handlebars/utils) can be removed because they're dynamically loaded according the {import} statements.
     -->
-    <script src="scripts/bootstrapper.js" defer></script>
+    <script src="js/controllers/zoo-controller.js" defer></script>
 
     <script id="food-list-template" type="text/x-handlebars-template">
     <header>

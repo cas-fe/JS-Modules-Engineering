@@ -17,3 +17,5 @@ class AnimalService {
         return panda;
     }
 }
+
+const animalService = new AnimalService();

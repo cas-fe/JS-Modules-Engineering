@@ -6,7 +6,7 @@
 function createLion(id, name) {
     const animal = createAnimal(id, `Lion: '${name}'`); // TODO: Step 2 - call base constructor: super(id, name)
 
-    // override behavoir of generic animal (place as members inside Lion class)
+    // override behaviour of generic animal (place as members inside Lion class)
     animal.compatibleFood = [
         {name: 'beef', amount: 5, timeToNextFood: 5},
         {name: 'chicken', amount: 10, timeToNextFood: 1}

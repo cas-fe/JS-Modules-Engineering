@@ -18,3 +18,5 @@ export class AnimalService {
         return panda;
     }
 }
+
+export const animalService = new AnimalService();

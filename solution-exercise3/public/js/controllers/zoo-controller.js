@@ -1,14 +1,7 @@
-// TODO: Step 1
-//  - Move zoo-controller.js to a new file location 'scripts/ui/zoo-controller.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
-//  - Analyze code: Is there any long method inside ZooController? How could you refactor that lines of code?
-//  - Intention: Structure/bundle cohesive files as first step to modularization.
-// TODO: Step 2
-//  - Pass the animal-service and food-service as constructor arguments into constructor and save those arguments as instance fields (e.g. this.animalService / this.foodService).
-//  - Use those instance fields instead the global 'animalService' / 'foodService' variables.
-//  - Intention: Controls UI logic and forwards events to corresponding business services.
-// TODO: Step 3
-//  - Use ES2015 module syntax: Export class ZooController and import required dependencies
-class ZooController {
+import {foodService} from '../services/food-service.js';
+import {animalService} from '../services/animal-service.js';
+
+export class ZooController {
     constructor() {
         this.foodTemplateCompiled = Handlebars.compile(document.getElementById('food-list-template').innerHTML);
         this.animalTemplateCompiled = Handlebars.compile(document.getElementById('animal-list-template').innerHTML);
@@ -20,11 +13,15 @@ class ZooController {
     }
 
     showAnimals() {
-        this.animalContainer.innerHTML = this.animalTemplateCompiled({animals: animalService.animals});
+        this.animalContainer.innerHTML = this.animalTemplateCompiled(
+            {animals: animalService.animals},
+            {allowProtoPropertiesByDefault: true});
     }
 
     showFood() {
-        this.foodContainer.innerHTML = this.foodTemplateCompiled({food: foodService.food});
+        this.foodContainer.innerHTML = this.foodTemplateCompiled(
+            {food: foodService.food},
+            {allowProtoPropertiesByDefault: true});
     }
 
     initEventHandlers() {
@@ -72,9 +69,12 @@ class ZooController {
         this.showFood();
     }
 
-    zooAction() {
+    initialize() {
         this.initEventHandlers();
         foodService.loadData();
         this.renderZooView();
     }
 }
+
+// create one-and-only instance
+new ZooController().initialize();

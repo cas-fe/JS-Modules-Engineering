@@ -1,8 +1,9 @@
+import {FoodStorage} from './data/food-storage.js';
 import {Food} from './food.js';
 
 export class FoodService {
-    constructor(foodStorage) {
-        this.storage = foodStorage;
+    constructor(storage) {
+        this.storage = storage || new FoodStorage();
         this.food = [ ];
     }
 
@@ -37,3 +38,5 @@ export class FoodService {
         }
     }
 }
+
+export const foodService = new FoodService();

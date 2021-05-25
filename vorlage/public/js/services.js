@@ -1,11 +1,11 @@
 // TODO: Step 1
-//  - Place createFood() into a new file in 'scripts/bl/food.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
+//  - Place createFood() into a new file in 'js/services/food.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
 //  - Create class Food; use 'new Food(id, name ...)' instead of 'createFood(id, name ...)'
 //  - Intention: Create a typed model object (which may contain logic) instead of a generic JSON structure.
 // TODO: Step 3
-//  - Use ES2015 module syntax: Export class Food
+//  - Use ES2015 module syntax: Export class Food.
 function createFood(id, name, amount, amountPerDelivery, isMeet) {
     return {
         id,
@@ -29,12 +29,12 @@ function createFood(id, name, amount, amountPerDelivery, isMeet) {
 
 
 // TODO: Step 1
-//  - Place foodService constant into a new file ('scripts/bl/food-service.js'). Reference 'scripts/bl/food-service.js' in zoo.html.
+//  - Place foodService constant into a new file ('js/services/food-service.js'). Reference 'js/services/food-service.js' in zoo.html.
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
-//  - Create class FoodService; use 'new FoodService(storage)' in Bootstrapper.
+//  - Create class FoodService; instantiate a const foodsService = new FoodService(storage); and use it in your controller.
 // TODO: Step 3
-//  - Use ES2015 module syntax: Export class FoodService and import dependencies (e.g. Food)
+//  - Use ES2015 module syntax: Export object foodService and import dependencies (e.g. Food).
 const foodService = {
     storage: createStorage(),
     food: [ ],
@@ -73,12 +73,12 @@ const foodService = {
 
 
 // TODO: Step 1
-//  - Place animalService constant into a new file in 'scripts/bl/animal-service.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
+//  - Place animalService constant into a new file in 'js/services/animal-service.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
-//  - Create class AnimalService; use 'new AnimalService()' in Bootstrapper.
+//  - Create class AnimalService; instantiate a const animalService = new AnimalService(); and use it in your controller.
 // TODO: Step 3
-//  - Use ES2015 module syntax: Export class AnimalService and import dependencies (e.g. Lion / Panda)
+//  - Use ES2015 module syntax: Export object animalService and import dependencies (e.g. Lion / Panda).
 const animalService = {
     animals: [ ],
 
@@ -97,13 +97,13 @@ const animalService = {
 
 
 // TODO: Step 1
-//  - Place createAnimal() into a new file in 'scripts/bl/animal.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
+//  - Place createAnimal() into a new file in 'js/services/animal.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
 //  - Create class Animal; use 'new Animal(id, name)' instead of 'createAnimal(id, name)'
 //  - Intention: Create a typed model object which represents the base class for Lion's and Panda's.
 // TODO: Step 3
-//  - Use ES2015 module syntax: Export class Animal
+//  - Use ES2015 module syntax: Export class Animal.
 function createAnimal(id, name) {
     return { // base 'object'
         id,
@@ -152,17 +152,17 @@ function createAnimal(id, name) {
 
 
 // TODO: Step 1
-//  - Place createPanda() into a new file in 'scripts/bl/panda.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
+//  - Place createPanda() into a new file in 'js/services/panda.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
 //  - Extract class Panda, derive from Animal (class Panda extends Animal)
 //  - Intention: Provide animal specialization with Panda behaviour
 // TODO: Step 3
-//  - Use ES2015 module syntax: Export class Panda and import dependencies
+//  - Use ES2015 module syntax: Export class Panda and import dependencies.
 function createPanda(id, name) {
     const animal = createAnimal(id, `Panda: '${name}'`); // TODO: Step 2 - call base constructor: super(id, name)
 
-    // override behavoir of generic animal (place as members inside Panda class)
+    // override behaviour of generic animal (place as members inside Panda class)
     animal.isEatable = true;
 
     animal.compatibleFood = [
@@ -173,17 +173,17 @@ function createPanda(id, name) {
 }
 
 // TODO: Step 1
-//  - Place createLion() into a new file in 'scripts/bl/lion.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
+//  - Place createLion() into a new file in 'js/services/lion.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
 //  - Extract class Lion, derive from Animal (class Lion extends Animal)
 //  - Intention: Provide animal specialization with Lion behaviour
 // TODO: Step 3
-//  - Use ES2015 module syntax: Export class Lion and import dependencies
+//  - Use ES2015 module syntax: Export class Lion and import dependencies.
 function createLion(id, name) {
     const animal = createAnimal(id, `Lion: '${name}'`); // TODO: Step 2 - call base constructor: super(id, name)
 
-    // override behavoir of generic animal (place as members inside Lion class)
+    // override behaviour of generic animal (place as members inside Lion class)
     animal.compatibleFood = [
         {name: 'beef', amount: 5, timeToNextFood: 5},
         {name: 'chicken', amount: 10, timeToNextFood: 1}

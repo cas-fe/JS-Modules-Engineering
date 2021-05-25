@@ -4,7 +4,7 @@
  */
 
 // TODO: Step 1
-//  - Place createStorage() into a new file ('scripts/dl/food-storage.js'). Reference 'scripts/dl/food-storage.js' in zoo.html.
+//  - Place createStorage() into a new file ('js/services/data/food-storage.js'). Reference 'js/services/data/food-storage.js' in zoo.html.
 //  - Analyze code: Is there any duplicated code? How could you refactor that line of code?
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
@@ -15,8 +15,6 @@ function createStorage() {
     const food = JSON.parse(localStorage.getItem('foodStorage_v1') || "[ ]");
     this.food = food;
     localStorage.setItem('foodStorage_v1', JSON.stringify(food));
-
-    storeFood(this.food);
 
     return {
         food,

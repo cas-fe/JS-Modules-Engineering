@@ -6,7 +6,7 @@
 function createPanda(id, name) {
     const animal = createAnimal(id, `Panda: '${name}'`); // TODO: Step 2 - call base constructor: super(id, name)
 
-    // override behavoir of generic animal (place as members inside Panda class)
+    // override behaviour of generic animal (place as members inside Panda class)
     animal.isEatable = true;
 
     animal.compatibleFood = [
