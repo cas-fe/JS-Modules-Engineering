@@ -8,18 +8,17 @@
 //  - Analyze code: Is there any duplicated code? How could you refactor that line of code?
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
-//  - Create class FoodStorage; use 'new FoodStorage()' in Bootstrapper.
+//  - Create class FoodStorage; use 'new FoodStorage()' instead of 'createStorage()'.
 // TODO: Step 3
-//  - Use ES2015 module syntax: Export class FoodStorage
+//  - Use ES2015 module syntax: Export class FoodStorage.
 function createStorage() {
     const food = JSON.parse(localStorage.getItem('foodStorage_v1') || "[ ]");
-    this.food = food;
     localStorage.setItem('foodStorage_v1', JSON.stringify(food));
 
     return {
         food,
         getAll() {
-            return this.food;
+            return food;
         },
         update(food) {
             localStorage.setItem('foodStorage_v1', JSON.stringify(food));

@@ -14,7 +14,7 @@ export class FoodStorage {
     }
 
     update(food) {
-        localStorage.setItem('foodStorage_v1', JSON.stringify(food));
-        return food;
+        localStorage.setItem('foodStorage_v1', JSON.stringify(this.food));
+        return this.food;
     }
 }

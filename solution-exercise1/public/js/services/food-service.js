@@ -1,5 +1,5 @@
 // TODO: Step 2
-//  - Create class FoodService; use 'new FoodService(storage)' in Bootstrapper.
+//  - Create class FoodService; instantiate a const foodsService = new FoodService(storage); and use it in your controller.
 // TODO: Step 3
 //  - Use ES2015 module syntax: Export class FoodService and import dependencies (e.g. Food)
 const foodService = {

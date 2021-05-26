@@ -4,7 +4,7 @@
  */
 
 // TODO: Step 3
-//  - Use ES2015 module syntax: Export class FoodStorage
+//  - Use ES2015 module syntax: Export class FoodStorage.
 class FoodStorage {
     constructor() {
         const food = JSON.parse(localStorage.getItem('foodStorage_v1') || "[ ]");
@@ -17,7 +17,7 @@ class FoodStorage {
     }
 
     update(food) {
-        localStorage.setItem('foodStorage_v1', JSON.stringify(food));
-        return food;
+        localStorage.setItem('foodStorage_v1', JSON.stringify(this.food));
+        return this.food;
     }
 }
