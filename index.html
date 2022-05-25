@@ -37,7 +37,7 @@
 			<li>Klassen in JavaScript Module platzieren und mittels Import-/Export-Syntax referenzieren.</li>
 		</ol>		
 
-		<p>Ihre Aufgabe ist es also, den bestehenden Programmcode in der Vorlage zu "verschönern" (refactoring).</p>
+		<p>Ihre Aufgabe ist es also, den bestehenden Programmcode in der Vorlage zu "verschönern" (refactoring). Bitte lesen Sie zu Beginn die gesamte Aufgabe durch und verschaffen Sie sich einen Überblick über die Vorlage.</p>
 
 		<section>
 			<header>
@@ -45,9 +45,9 @@
 			</header>
 			Sie finden die Ausgangslage im Ordner 'vorlage' vor. Die zu bearbeitenden Files befinden sich im Ordner 'public' bzw. 'public/js'.
 			<ul>
-				<li>Wenn Sie beim Vorgehen unsicher sind, können Sie den TODOs in der Vorlage folgen. Diese definieren eine strukturierte Vorgehensweise, wie Sie die Übung lösen könnten.</li>
-				<li>Die Lösungen befinden sich jeweils im Ordner 'solutions-exercise<code>Nr</code>', wobei <code>Nr</code> für die aktuelle Übungsnummer steht. Bei Unklarheiten kann die Lösung ebenfalls zurate gezogen werden.</li>
-				<li>Falls Sie mit der vorherigen Lösung noch nicht fertig sind, können Sie auch mit der letzten Lösung aus dem Ordner 'solutions-exercise<code>Nr</code>' fortfahren.</li>
+				<li>Folgen Sie den <code>// TODO</code>s in der Vorlage. Diese definieren eine angeleitete, prozessorientierte Vorgehensweise, um die Aufgabe zu lösen.</li>
+				<li>Die Lösungen befinden sich jeweils im Ordner 'solutions-exercise<code>Nr</code>', wobei <code>Nr</code> für die aktuelle Übungsnummer steht. Bei Unklarheiten zur Vorgehensweise kann die Lösung ebenfalls zurate gezogen werden.</li>
+				<li>Falls Sie mit einer Lösung nicht rechtzeitig fertig wurden, können Sie auch mit der letzten Lösung aus dem Ordner 'solutions-exercise<code>Nr</code>' fortfahren.</li>
 				<li>Um eingeschlichene Fehler möglichst effizient zu erkennen, sollten Sie Ihre Lösung in möglichst granularen Schritten testen.</li>
 			</ul>
 		</section>
@@ -114,10 +114,10 @@
 			<header>
 				<h3>Exercise 1</h3>
 			</header>
-			In dieser Übung werden Sie sich mit der Vorlage vertraut machen und die verwendeten JavaScript Konstrukte innerhalb der Applikation analysieren. Sie finden die Tipps unter <code>// TODO: Step 1</code>.
+			In dieser Übung werden Sie sich mit der Vorlage vertraut machen und die verwendeten JavaScript Konstrukte innerhalb der Applikation analysieren. Sie finden die Anweisungen unter <code>// TODO: Step 1</code>.
 			<ul>
-				<li>Erstellen Sie pro Modul (Klassenkonstrukt) / Funktion ein eigenes File. Benennen Sie die Files nach dem kebap-case Schema. Beispielsweise wird die Funktion createStorage() im Verlauf der Übung zur FoodStorage Klasse umgebaut; entsprechend wird diese Klasse ins File food-storage.js platziert.</li>
-				<li>Bauen Sie die folgende Ordnerstruktur auf und platzieren Sie die Files entsprechend der logischen Zugehörigkeit. Platzieren Sie die Verlinkungen ebenfalls im <code>zoo.html</code>.
+				<li>Erstellen Sie pro Funktion ein eigenes File. Benennen Sie die Files nach dem kebap-case Schema (siehe <code>// TODO: Step 1</code>). Beispielsweise wird die Funktion <code>createStorage()</code> im Verlauf der Übung zur FoodStorage Klasse umgebaut; die Logik von <code>createStorage()</code> findet sich schlussendlich im <code>food-storage.js</code> File ein.</li>
+				<li>Bauen Sie die folgende Ordnerstruktur auf und verschieben Sie die Files, welche Sie im vorherigen Schritt angelegt haben, in die zugehörigen Ordner. Platzieren Sie die <code>&lt;script&gt;</code>-Tags mit den File-Referenzen ins <code>zoo.html</code>.
 					<ul>
 						<li>js
 							<ul>
@@ -141,13 +141,13 @@
 			<header>
 				<h3>Exercise 2</h3>
 			</header>
-			Bauen Sie die objektbasierten Konstrukte in echte Klassen und Objekte um. Sie finden die Tipps unter <code>// TODO: Step 2</code>.
+			Bauen Sie die objektbasierten Konstrukte (<code>createFood()</code> / <code>createAnimal</code> / ...) in echte Klassen und Objekte um. Sie finden die Anweisungen unter <code>// TODO: Step 2</code>.
 			<details>
 				<summary>Mögliche Vorgehensweise</summary>
 				<ul>
-					<li>Die Funktion <code>createFood()</code> gibt ein neues JavaScript-Objekt Literal zurück. Die Implementation der <code>createFood()</code> Funktion wäre ein klassischer Anwendungsfall für eine Klasse. Übersetzen Sie <code>createFood()</code> in eine Klasse mit sämtlichen Instanzfeldern/Eigenschaften (id, name, amount, ...) des ursprünglich generischen Objekts. Verwenden Sie nun im <code>food-service.js</code> den Konstruktor der soeben erstellten Klasse (z.B. <code>new Food(...)</code> anstatt <code>createFood(...)</code>).</li>
-					<li>Übersetzen Sie das <code>foodService</code>-Konstrukt in eine Klasse. Im Vergleich zu Object Literal's müssen Klassen instanziiert werden. Platzieren Sie die Instanziierung direkt nach der Klasse (<code>const foodService = new FoodService()</code>).</li>
-					<li>Gehen Sie bei der Übersetzung des <code>animalService</code>-Konstrukts analog zum Punkt <code>foodService</code> vor.</li>
+					<li>Die Funktion <code>createFood()</code> gibt ein neues JavaScript-Objekt Literal zurück. Die Implementation der <code>createFood()</code> Funktion ist ein klassischer Anwendungsfall für eine Klasse. Somit lassen sich die OOP-Konzepte wie Vererbung (Polymorphie) von JavaScript einsetzen. Übersetzen Sie also <code>createFood()</code> in eine Klasse mit sämtlichen Instanzfeldern/Eigenschaften (id, name, amount, ...) des ursprünglichen Plain JavaScript Objects. Verwenden Sie nun im <code>food-service.js</code> den Konstruktor der soeben erstellten Klasse (z.B. <code>new Food(...)</code> anstatt <code>createFood(...)</code>).</li>
+					<li>Übersetzen Sie das <code>foodService</code>-Konstrukt in eine Klasse. Im Vergleich zu Object Literal's müssen Klassen instanziiert werden. Platzieren Sie die Instanziierung direkt nach der Klassendefinition (<code>const foodService = new FoodService()</code>).</li>
+					<li>Gehen Sie bei der Übersetzung des <code>animalService</code>-Konstrukts analog zum Punkt oberhalb (bezüglich <code>foodService</code>) vor.</li>
 					<li>Das Konstrukt <code>createAnimal</code> soll als Basis-Klasse für die Lion/Panda's dienen. Übersetzen Sie <code>createAnimal</code> entsprechend in eine eigene Klasse. Legen Sie nun die Klasse <code>Lion</code> entsprechend zu <code>createLion</code> an. Leiten Sie <code>Lion</code> von <code>Animal</code> ab und überschreiben Sie (overriding) die notwendigen Attribute / Methoden. Verwenden Sie im Anschluss nicht mehr <code>createLion(...)</code> sondern <code>new Lion(...)</code> (d.h. anpassen des <code>AnimalService</code>).</li>
 					<li>Erstellen Sie die Klasse <code>Panda</code> aus dem Konstrukt in <code>createPanda</code> und leiten Sie <code>Panda</code> von <code>Animal</code> ab. Setzen Sie die notwendigen Attribute im Panda-Konstruktor. Passen Sie den <code>AnimalService</code> an, damit dieser nun <code>new Panda(...)</code> aufruft.</li>
 					<li>Überführen Sie als Nächstes die Funktionalität in <code>food-storage.js</code> in eine eigene <code>FoodStorage</code> Klasse.</li>

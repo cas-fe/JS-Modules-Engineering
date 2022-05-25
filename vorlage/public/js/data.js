@@ -5,7 +5,7 @@
 
 // TODO: Step 1
 //  - Place createStorage() into a new file ('js/services/data/food-storage.js'). Reference 'js/services/data/food-storage.js' in zoo.html.
-//  - Analyze code: Is there any duplicated code? How could you refactor that line of code?
+//  - Analyze code: Is there any duplicated code? How could you refactor that line(s) of code?
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
 // TODO: Step 2
 //  - Create class FoodStorage; use 'new FoodStorage()' instead of 'createStorage()'.

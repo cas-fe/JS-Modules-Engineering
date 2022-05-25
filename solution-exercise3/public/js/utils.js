@@ -1,6 +1,7 @@
 /**
  * Array Helper Function:
  * - Extend Array prototype with a filter method.
+ * - Concepts explained in optional slides.
  */
 Array.prototype.findByName = function(name) {
     name = String(name);
