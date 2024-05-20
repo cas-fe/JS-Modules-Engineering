@@ -18,13 +18,13 @@
 		<p>Vertiefen und praktisches Anwenden von Klassen und Modulen im Zusammenhang mit dem Model-View-Controller Pattern.</p>
   
 		<h2>Vorbereitung</h2>
-		<ul>
+		<ol>
 			<li>Kopieren/klonen Sie die Aufgabe von <a href="https://github.com/IFS-Web/HSR.CAS-FEE.JS-ENG2" target="_blank">github.com/IFS-Web/HSR.CAS-FEE.JS-ENG2</a> auf Ihren Rechner.</li>
 			<li>Öffnen Sie eine Command Prompt (z.B. Windows Console, cmd.exe) und navigieren Sie in den Ordner "/vorlage"</li>
 			<li>Führen Sie den Command "npm install" aus, um das npm-Paket mit dessen Abhängigkeiten zu installieren.</li>
 			<li>Starten Sie den Server mit "npm start"</li>
 			<li>Die Webseite ist unter <a href="http://localhost:3000/" target="_blank">http://localhost:3000/</a> erreichbar.</li>
-		</ul>
+		</ol>
 
 		<h2>API</h2>
 		<p>Der Server gibt das zoo.html File im Ordner vorlage/public zurück. Eine zusätzliche Server-API ist nicht notwendig.</p>
@@ -115,7 +115,7 @@
 				<h3>Exercise 1</h3>
 			</header>
 			In dieser Übung werden Sie sich mit der Vorlage vertraut machen und die verwendeten JavaScript Konstrukte innerhalb der Applikation analysieren. Sie finden die Anweisungen unter <code>// TODO: Step 1</code>.
-			<ul>
+			<ol>
 				<li>Erstellen Sie pro Funktion ein eigenes File. Benennen Sie die Files nach dem kebap-case Schema (siehe <code>// TODO: Step 1</code>). Beispielsweise wird die Funktion <code>createStorage()</code> im Verlauf der Übung zur FoodStorage Klasse umgebaut; die Logik von <code>createStorage()</code> findet sich schlussendlich im <code>food-storage.js</code> File ein.</li>
 				<li>Bauen Sie die folgende Ordnerstruktur auf und verschieben Sie die Files, welche Sie im vorherigen Schritt angelegt haben, in die zugehörigen Ordner. Platzieren Sie die <code>&lt;script&gt;</code>-Tags mit den File-Referenzen ins <code>zoo.html</code>.
 					<ul>
@@ -135,7 +135,7 @@
 						<li>zoo.html<code class="list-description">(View)</code></li>
 					</ul>
 				</li>
-			</ul>
+			</ol>
 		</section>
 		<section>
 			<header>
@@ -161,14 +161,14 @@
 				<h3>Exercise 3</h3>
 			</header>
 			Führen Sie nun ES2015 Modules ein. Sie finden die Tipps unter <code>// TODO: Step 3</code>.
-			<ul>
-				<li>Ihre Lösung ist nach Exercise 2 optimal vorbereitet für den Einsatz von ES2015 Modules. Achtung: Ihre Lösung lässt sich bis zum kompletten Abschluss des Step 3 nicht mehr ausführen.</li>
+			Ihre Lösung ist nach Exercise 2 optimal vorbereitet für den Einsatz von ES2015 Modules. Achtung: Der Code lässt sich bis zum kompletten Abschluss des Step 3 nicht mehr ausführen.
+			<ol>
 				<li>Referenzieren Sie die js-Files als Modules. Exportieren Sie die Klassen/Konstanten, welche von anderen Files wiederverwendet werden sollen.</li>
 				<li>Importieren Sie wo nötig die Klassen/Konstanten mittels Import-Syntax.</li>
 				<li>Deklarieren Sie ebenfalls den Zoo-Controller-Aufruf im <code>zoo.html</code> im <code>&lt;script type="module"&gt;</code>-Syntax.</li>
 				<li>Entfernen Sie schlussendlich die nicht mehr benötigten <code>script</code>-Tags im <code>zoo.html</code> File.</li>
 				<li>Optional: Wie könnten Sie die Business Services testbar (d.h. unabhängig von den Data Access Services) machen?</li>
-			</ul>
+			</ol>
 		</section>
 		<section>
 			<header>

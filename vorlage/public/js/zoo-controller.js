@@ -34,7 +34,7 @@ function initEventHandlers() {
         if (!isNaN(foodId)) {
             event.target.setAttribute('disabled', true);
 
-            foodService.orderFoodById(foodId);
+            foodService.orderFoodById(foodId, () => showFood());
             showFood();
             event.target.removeAttribute('disabled');
         }

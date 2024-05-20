@@ -31,7 +31,7 @@ class ZooController {
             if (!isNaN(foodId)) {
                 event.target.setAttribute('disabled', true);
 
-                foodService.orderFoodById(foodId);
+                foodService.orderFoodById(foodId, () => this.showFood());
                 this.showFood();
                 event.target.removeAttribute('disabled');
             }

@@ -57,7 +57,7 @@ const foodService = {
         this.storage.update(this.food.map(f => f.toJSON()));
     },
 
-    orderFoodById(foodId) {
+    orderFoodById(foodId, onOrderArrived) {
         const toOrder = this.food[foodId];
         if (toOrder) {
             toOrder.isOrderPending = true;
@@ -66,6 +66,10 @@ const foodService = {
                 toOrder.amount += toOrder.amountPerDelivery;
                 toOrder.isOrderPending = false;
                 this.save();
+
+                if (typeof(onOrderArrived) === 'function') {
+                    onOrderArrived();
+                }
             });
         }
     }

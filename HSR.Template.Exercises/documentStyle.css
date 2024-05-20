@@ -120,6 +120,9 @@ th a {
 td {
 	text-align: center;
 }
+td[data-text] {
+	text-align: left;
+}
 thead th {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -130,24 +133,8 @@ tbody th {
 
 
 /* lists */
-ul, ol {
-	padding-left: 0;
-	list-style-position: inside;
-}
 ul {
 	list-style-type: circle;
-}
-ol {
-	list-style: upper-alpha;
-}
-ul li, ol li {
-	list-style-position: inside;
-}
-ul ul, ul ol, ol ul, ol ol {
-	padding-left: 1rem;
-}
-ol ol {
-	list-style-type: lower-roman;
 }
 li > pre {
 	margin: 0;
