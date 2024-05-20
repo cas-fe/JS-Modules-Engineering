@@ -1,5 +1,6 @@
-.list-description {
-    margin-left: 100px;
+.topic {
+    display: inline-block;
+    width: 250px;
 }
 
 .adv {
