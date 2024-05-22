@@ -8,7 +8,7 @@ function createLion(id, name) {
 
     // override behaviour of generic animal (place as members inside Lion class)
     animal.compatibleFood = [
-        {name: 'beef', amount: 5, timeToNextFood: 5},
+        {name: 'beef', amount: 5, timeToNextFood: 1.5},
         {name: 'chicken', amount: 10, timeToNextFood: 1}
     ];
 
@@ -18,7 +18,7 @@ function createLion(id, name) {
                 return (p.isEatable && !p.isDead);
             });
             if (panda[0]) {
-                this.setNextFeedAt(24, callback);
+                this.setNextFeedAt(2, callback);
                 panda[0].eaten();
                 return true;
             }
