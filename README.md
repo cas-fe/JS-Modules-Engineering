@@ -1,4 +1,4 @@
-# CAS FEE - OOD-Übung
+# CAS FEN - OOD-Übung
 
 ## Ziele der Übung
 Vertiefen und praktisches Anwenden von Klassen und Modulen im Zusammehang mit dem Model-View-Controller Pattern.
