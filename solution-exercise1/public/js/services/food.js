@@ -1,7 +1,7 @@
-// TODO: Step 2
+// TODO: Step 2 / Exercise 2
 //  - Create class Food; use 'new Food(id, name ...)' instead of 'createFood(id, name ...)'
 //  - Intention: Create a typed model object (which may contain logic) instead of a generic JSON structure.
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Use ES2015 module syntax: Export class Food
 function createFood(id, name, amount, amountPerDelivery, isMeet) {
     return {

@@ -1,7 +1,7 @@
-// TODO: Step 2
+// TODO: Step 2 / Exercise 2
 //  - Create class Animal; use 'new Animal(id, name)' instead of 'createAnimal(id, name)'
 //  - Intention: Create a typed model object which represents the base class for Lion's and Panda's.
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Use ES2015 module syntax: Export class Animal
 function createAnimal(id, name) {
     return { // base 'object'

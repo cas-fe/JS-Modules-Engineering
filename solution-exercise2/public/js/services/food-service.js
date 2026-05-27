@@ -1,4 +1,4 @@
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Use ES2015 module syntax: Export class FoodService and import dependencies (e.g. Food)
 //  - Optional: Ensure testability of business service (provide configurability of foodStorage)
 class FoodService {

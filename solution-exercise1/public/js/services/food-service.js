@@ -1,6 +1,6 @@
-// TODO: Step 2
+// TODO: Step 2 / Exercise 2
 //  - Create class FoodService; instantiate a const foodsService = new FoodService(storage); and use it in your controller.
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Use ES2015 module syntax: Export class FoodService and import dependencies (e.g. Food)
 const foodService = {
     storage: createStorage(),

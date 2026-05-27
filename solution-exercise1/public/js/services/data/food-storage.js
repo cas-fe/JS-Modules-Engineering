@@ -3,9 +3,9 @@
  * This logic represents the data layer/driver for the Zoo application.
  */
 
-// TODO: Step 2
+// TODO: Step 2 / Exercise 2
 //  - Create class FoodStorage; use 'new FoodStorage()' instead of 'createStorage()'.
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Use ES2015 module syntax: Export class FoodStorage.
 function createStorage() {
     const food = JSON.parse(localStorage.getItem('foodStorage_v1') || "[ ]");

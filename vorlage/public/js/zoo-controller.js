@@ -1,11 +1,11 @@
-// TODO: Step 1
+// TODO: Step 1 / Exercise 1
 //  - Move zoo-controller.js to another location at 'js/controllers/zoo-controller.js'. Reference this new file as <script src='...' defer></script> in zoo.html.
 //  - Analyze code: Is there any long method inside zoo-controller? How could you refactor that line(s) of code?
 //  - Intention: Structure/bundle cohesive files as first step to modularization.
-// TODO: Step 2
+// TODO: Step 2 / Exercise 2
 //  - Optional: Wrap features of zoo-controller into a class.
 //  - Intention: ZooController instance controls UI logic and forwards events to corresponding business services.
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Import required dependencies by using ES2015 module syntax.
 const foodTemplateCompiled = Handlebars.compile(document.getElementById('food-list-template').innerHTML);
 const animalTemplateCompiled = Handlebars.compile(document.getElementById('animal-list-template').innerHTML);

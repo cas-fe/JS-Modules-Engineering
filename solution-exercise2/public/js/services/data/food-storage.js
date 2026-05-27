@@ -3,7 +3,7 @@
  * This logic represents the data layer/driver for the Zoo application.
  */
 
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Use ES2015 module syntax: Export class FoodStorage.
 class FoodStorage {
     constructor() {

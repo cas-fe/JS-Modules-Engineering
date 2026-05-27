@@ -1,4 +1,4 @@
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Use ES2015 module syntax: Export class Lion and import dependencies
 class Lion extends Animal {
     constructor(id, name) {

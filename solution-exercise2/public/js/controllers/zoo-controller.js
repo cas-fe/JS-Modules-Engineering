@@ -1,4 +1,4 @@
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Use ES2015 module syntax: Export class ZooController and import required dependencies
 class ZooController {
     constructor() {

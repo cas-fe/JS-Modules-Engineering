@@ -1,7 +1,7 @@
-// TODO: Step 2
+// TODO: Step 2 / Exercise 2
 //  - Optional: Wrap features of zoo-controller into a class.
 //  - Intention: ZooController controls UI logic and forwards events to corresponding business services.
-// TODO: Step 3
+// TODO: Step 3 / Exercise 3
 //  - Import required dependencies by using ES2015 module syntax.
 const foodTemplateCompiled = Handlebars.compile(document.getElementById('food-list-template').innerHTML);
 const animalTemplateCompiled = Handlebars.compile(document.getElementById('animal-list-template').innerHTML);
